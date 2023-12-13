@@ -1,63 +1,63 @@
 # st.selectbox
 
-`st.selectbox` allows the display of a select widget.
+`st.selectbox`는 선택 위젯을 표시할 수 있게 합니다.
 
-## What we're building?
+## 우리가 만드는 것은?
 
-A simple app that asks the user what their favorite color is.
+사용자에게 가장 좋아하는 색상이 무엇인지 묻는 간단한 앱입니다.
 
-Flow of the app:
-1. User selects a color
-2. App prints out the selected color
+앱의 흐름:
+1. 사용자가 색상을 선택합니다.
+2. 앱이 선택된 색상을 출력합니다.
 
-## Demo app
-The deployed Streamlit app should look something like the one shown in the below link: 
+## 데모 앱
+배포된 Streamlit 앱은 아래 링크에 표시된 것과 같아야 합니다:
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.selectbox/)
 
-## Code
-Here's the code to implement the above mentioned app:
+## 코드
+위에서 언급한 앱을 구현하기 위한 코드는 다음과 같습니다:
 ```python
 import streamlit as st
 
 st.header('st.selectbox')
 
 option = st.selectbox(
-     'What is your favorite color?',
-     ('Blue', 'Red', 'Green'))
+     '가장 좋아하는 색상은 무엇인가요?',
+     ('파랑', '빨강', '초록'))
 
-st.write('Your favorite color is ', option)
+st.write('당신이 좋아하는 색상은 ', option)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+이는 앱에 대한 헤더 텍스트를 만드는 것으로 이어집니다:
 ```python
 st.header('st.selectbox')
 ```
 
-Next, we will create a variable called `option` that will accept user input in the form of a **select** input widget via the `st.selectbox()` command.
+다음으로, `option`이라는 변수를 생성하고 `st.selectbox()` 명령어를 통해 **선택** 입력 위젯 형태로 사용자 입력을 받습니다.
 
 ```python
 option = st.selectbox(
-     'What is your favorite color?',
-     ('Blue', 'Red', 'Green'))
+     '가장 좋아하는 색상은 무엇인가요?',
+     ('파랑', '빨강', '초록'))
 ```
-As we can see from the above code box, the `st.selectbox()` command accepts 2 input arguments:
-1. The text that goes above the select widget, i.e. `'What is your favorite color?'`
-2. The possible values to select from `('Blue', 'Red', 'Green')`
+위 코드 상자에서 볼 수 있듯이, `st.selectbox()` 명령어는 2개의 입력 인수를 받습니다:
+1. 선택 위젯 위에 표시되는 텍스트, 즉 `'가장 좋아하는 색상은 무엇인가요?'`
+2. 선택할 수 있는 가능한 값들 `('파랑', '빨강', '초록')`
 
-Finally, we'll print out the selected color as follows:
+마지막으로, 선택된 색상을 다음과 같이 출력합니다:
 ```python
-st.write('Your favorite color is ', option)
+st.write('당신이 좋아하는 색상은 ', option)
 ```
 
-## Next steps
-Now that you have created the Streamlit app locally, it's time to deploy it to [Streamlit Community Cloud](https://streamlit.io/cloud).
+## 다음 단계
+지금까지 Streamlit 앱을 로컬에서 생성했다면, 이제 [Streamlit Community Cloud](https://streamlit.io/cloud)에 배포할 시간입니다.
 
-## References 
-More about [`st.selectbox`](https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)
+## 참고 자료
+[`st.selectbox`](https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)에 대해 더 알아보세요.
