@@ -1,29 +1,29 @@
-# st.write
+# `st.write`란?
 
-`st.write` allows writing text and arguments to the Streamlit app.
+`st.write`는 스트림릿 앱에 텍스트와 인수를 작성하는 데 사용됩니다.
 
-In addition to being able to display text, the following can also be displayed via the `st.write()` command:
+텍스트를 표시할 수 있을 뿐만 아니라, `st.write()` 명령을 통해 다음도 표시할 수 있습니다:
 
 
-- Prints strings; works like `st.markdown()`
-- Displays a Python `dict`
-- Displays `pandas` DataFrame can be displayed as a table
-- Plots/graphs/figures from `matplotlib`, `plotly`, `altair`, `graphviz`, `bokeh`
-- And more (see [st.write on API docs](https://docs.streamlit.io/library/api-reference/write-magic/st.write))
+- 문자열 출력; `st.markdown()`처럼 작동
+- 파이썬 `dict` 표시
+- `pandas` DataFrame을 테이블로 표시
+- `matplotlib`, `plotly`, `altair`, `graphviz`, `bokeh`의 플롯/그래프/그림
+- 그 외 더 많음 ([st.write API 문서 참조](https://docs.streamlit.io/library/api-reference/write-magic/st.write))
 
-## What we're building?
+## 무엇을 만들고 있나요?
 
-A simple app showing the various ways on how to use the `st.write()` command for displaying text, numbers, DataFrames and plots.
+텍스트, 숫자, DataFrames, 그래프 등을 표시하는 방법에 대해 다양한 예제를 보여주는 간단한 앱입니다.
 
-## Demo app
+## 데모 앱
 
-The deployed Streamlit app should look something like the one shown in the below link:
+배포된 스트림릿 앱은 아래 링크에 있는 것과 비슷하게 보일 것입니다:
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.write/)
+[![스트림릿 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.write/)
 
-## Code
+## 코드
 
-Here's how to use st.write:
+`st.write` 사용 방법은 다음과 같습니다:
 
 ```python
 import numpy as np
@@ -33,27 +33,27 @@ import streamlit as st
 
 st.header('st.write')
 
-# Example 1
+# 예제 1
 
-st.write('Hello, *World!* :sunglasses:')
+st.write('안녕하세요, *세계여!* :sunglasses:')
 
-# Example 2
+# 예제 2
 
 st.write(1234)
 
-# Example 3
+# 예제 3
 
 df = pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40]
+     '첫 번째 컬럼': [1, 2, 3, 4],
+     '두 번째 컬럼': [10, 20, 30, 40]
      })
 st.write(df)
 
-# Example 4
+# 예제 4
 
-st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
+st.write('아래는 DataFrame입니다:', df, '위는 dataframe입니다.')
 
-# Example 5
+# 예제 5
 
 df2 = pd.DataFrame(
      np.random.randn(200, 3),
@@ -63,54 +63,54 @@ c = alt.Chart(df2).mark_circle().encode(
 st.write(c)
 ```
 
-## Line-by-line explanation
+## 한 줄씩 설명
 
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+스트림릿 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+이어서 앱에 대한 헤더 텍스트를 생성합니다:
 
 ```python
 st.header('st.write')
 ```
 
-**Example 1**
-Its basic use case is to display text and Markdown-formatted text:
+**예제 1**
+기본적인 사용법은 텍스트와 마크다운 형식의 텍스트를 표시하는 것입니다:
 
 ```python
-st.write('Hello, *World!* :sunglasses:')
+st.write('안녕하세요, *세계여!* :sunglasses:')
 ```
 
-**Example 2**
-As mentioned above, it can also be used to display other data formats such as numbers:
+**예제 2**
+앞서 언급했듯이, 숫자와 같은 다른 데이터 형식도 표시할 수 있습니다:
 
 ```python
 st.write(1234)
 ```
 
-**Example 3**
-DataFrames can also be displayed as follows:
+**예제 3**
+DataFrame도 다음과 같이 표시할 수 있습니다:
 
 ```python
 df = pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40]
+     '첫 번째 컬럼': [1, 2, 3, 4],
+     '두 번째 컬럼': [10, 20, 30, 40]
      })
 st.write(df)
 ```
 
-**Example 4**
-You can pass in multiple arguments:
+**예제 4**
+여러 인수를 전달할 수 있습니다:
 
 ```python
-st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
+st.write('아래는 DataFrame입니다:', df, '위는 dataframe입니다.')
 ```
 
-**Example 5**
-Finally, you can also display plots as well by passing it to a variable as follows:
+**예제 5**
+마지막으로, 변수로 전달함으로써 그래프도 표시할 수 있습니다:
 
 ```python
 df2 = pd.DataFrame(
@@ -121,25 +121,27 @@ c = alt.Chart(df2).mark_circle().encode(
 st.write(c)
 ```
 
-## Demo app
+## 데모 앱
 
-The deployed Streamlit app should look something like the one shown in the below link:
+배포된 스트림릿 앱은 아래 링크에 있는 것과 비슷하게 보일 것입니다:
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.write/)
+[![스트림릿 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.write/)
 
-## Next steps
+## 다음 단계
 
-Now that you have created the Streamlit app locally, it's time to deploy it to [Streamlit Community Cloud](https://streamlit.io/cloud) as will be explained soon in an upcoming challenge.
+이제 로컬에서 스트림릿 앱을 만들었으니, 곧 다가올 챌린지에서 [스트림릿 커뮤니티 클라우드](https://streamlit.io/cloud)에 배포하는 방법을 설명할 것입니다.
 
-Because this is the first week of your challenge, we provide the full code (as shown in the code box above) and solution (the demo app) right inside this webpage.
+이것이 당신의 첫 번째 챌린지 주이므로, 우리는 전체 코드(위 코드 상자에 표시된 것과 같은)와 솔루션(데모 앱)을 이 웹페이지 안에 바로 제공합니다.
 
-Moving forward in the next challenges, it is recommended that you first try implementing the Streamlit app yourself.
+다음 챌린지에서는 먼저 스트림릿 앱을 직접 구현하는 것이 권장됩니다.
 
-Don't worry if you get stuck, you can always take a peek at the solution.
+만약 막히게 되면, 언제든지 해결책을 엿볼 수 있습니다.
 
-## Further reading
+## 추가 읽기
 
-In addition to [`st.write`](https://docs.streamlit.io/library/api-reference/write-magic/st.write), you can explore the other ways of displaying text:
+[`st.write`](https://
+
+docs.streamlit.io/library/api-reference/write-magic/st.write) 외에도, 다른 방법으로 텍스트를 표시하는 방법을 탐색할 수 있습니다:
 
 - [`st.markdown`](https://docs.streamlit.io/library/api-reference/text/st.markdown)
 - [`st.header`](https://docs.streamlit.io/library/api-reference/text/st.header)
