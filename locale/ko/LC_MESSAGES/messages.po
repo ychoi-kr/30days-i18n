@@ -14,7 +14,7 @@ msgstr ""
 
 #: streamlit_app.py:23 streamlit_app.py:32
 msgid "Day {day}"
-msgstr "{day}일"
+msgstr "{day}일차"
 
 #: streamlit_app.py:39
 msgid "# 30 Days of Streamlit"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: streamlit_app.py:92
 msgid "# 🗓️ Which {day_num}"
-msgstr "# {day_num}일 🗓️"
+msgstr "# {day_num}일차 🗓️"
 
 #: streamlit_app.py:97
 msgid "### Figures"
