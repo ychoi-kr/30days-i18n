@@ -1,40 +1,40 @@
-# Setting up a local development environment
+# 로컬 개발 환경 설정하기
 
-Before we can actually start building Streamlit apps, we will first have to setup a development environment.
+Streamlit 앱 구축을 시작하기 전에, 먼저 개발 환경을 설정해야 합니다.
 
-Let's start by installing and setting up a conda environment.
+conda 환경을 설치하고 설정하는 것부터 시작해 봅시다.
 
-## **Install conda**
-- Install `conda` by going to https://docs.conda.io/en/latest/miniconda.html and choose your operating system (Windows, Mac or Linux). 
-- Download and run the installer to install `conda`.
+## **conda 설치하기**
+- <https://docs.conda.io/en/latest/miniconda.html>로 이동하여 운영 체제(Windows, Mac 또는 Linux)를 선택하고 `conda`를 설치합니다.
+- 설치 프로그램을 다운로드하여 실행하여 `conda`를 설치합니다.
 
-## **Create a new conda environment**
-Now that you have conda installed, let's create a conda environment for managing all the Python library dependencies.
+## **새로운 conda 환경 만들기**
+이제 conda가 설치되었으니, Python 라이브러리 종속성을 관리하기 위한 conda 환경을 만들어 봅시다.
 
-To create a new environment with Python 3.9, enter the following:
+Python 3.9로 새 환경을 만들려면 다음을 입력하세요:
 ```bash
 conda create -n stenv python=3.9
 ```
 
-where `create -n stenv` will create a conda environment named `stenv` and `python=3.9` will setup the conda environment with Python version 3.9.
+여기서 `create -n stenv`는 `stenv`라는 이름의 conda 환경을 생성하고, `python=3.9`는 Python 버전 3.9로 conda 환경을 설정합니다.
 
-## **Activate the conda environment**
+## **conda 환경 활성화하기**
 
-To use a conda environment that we had just created that is named `stenv`, enter the following into the command line:
+`stenv`라고 이름 지어진 우리가 방금 만든 conda 환경을 사용하기 위해 커맨드 라인에 다음을 입력하세요:
 
 ```bash
 conda activate stenv
 ```
 
-## **Install the Streamlit library**
+## **Streamlit 라이브러리 설치하기**
 
-It's now time to install the `streamlit` library:
+이제 `streamlit` 라이브러리를 설치할 시간입니다:
 ```bash
 pip install streamlit
 ```
 
-## **Launching the Streamlit demo app**
-To launch the Streamlit demo app (Figure 1) type:
+## **Streamlit 데모 앱 실행하기**
+Streamlit 데모 앱(그림 1)을 실행하려면 다음을 입력하세요:
 ```bash
 streamlit hello
 ```
