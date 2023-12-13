@@ -1,25 +1,25 @@
-# st.button
+# st.button 사용하기
 
-`st.button` allows the display of a button widget.
+`st.button`은 버튼 위젯을 표시하는 데 사용됩니다.
 
-## What we're building?
+## 우리가 만들 것은?
 
-A simple app that performs conditionally prints out alternative messages depending on whether the button was pressed or not.
+버튼이 눌렸는지 여부에 따라 조건적으로 다른 메시지를 출력하는 간단한 앱입니다.
 
-Flow of the app:
+앱의 흐름:
 
-1. By default, the app prints `Goodbye`
-2. Upon clicking on the button, the app displays the alternative message `Why hello there`
+1. 기본적으로 앱은 `Goodbye`를 출력합니다.
+2. 버튼을 클릭하면 앱은 대체 메시지 `Why hello there`를 표시합니다.
 
-## Demo app
+## 데모 앱
 
-The deployed Streamlit app should look something like the one shown in the below link:
+배포된 Streamlit 앱은 아래 링크에 표시된 것처럼 보일 것입니다:
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.button/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.button/)
 
-## Code
+## 코드
 
-Here's the code to implement the above mentioned app:
+위에 언급된 앱을 구현하기 위한 코드는 다음과 같습니다:
 
 ```python
 import streamlit as st
@@ -32,21 +32,21 @@ else:
      st.write('Goodbye')
 ```
 
-## Line-by-line explanation
+## 코드 설명
 
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 임포트하는 것입니다:
 
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+그 다음에는 앱의 헤더 텍스트를 생성합니다:
 
 ```python
 st.header('st.button')
 ```
 
-Next, we will use conditional statements `if` and `else` for printing alternative messages.
+그 다음, `if`와 `else` 조건문을 사용하여 대체 메시지를 출력합니다.
 
 ```python
 if st.button('Say hello'):
@@ -55,33 +55,32 @@ else:
      st.write('Goodbye')
 ```
 
-As we can see from the above code box, the `st.button()` command accepts the `label` input argument of `Say hello`, which is the text that the button displays.
+위 코드 상자에서 볼 수 있듯이, `st.button()` 명령은 `Say hello`라는 `label` 입력 인수를 받아들입니다. 이는 버튼에 표시되는 텍스트입니다.
 
-The `st.write` command is used to print text messages of either `Why hello there` or `Goodbye` depending on whether the button was clicked or not, which is implemented via:
-
+버튼이 클릭되었는지 여부에 따라 `Why hello there` 또는 `Goodbye`라는 텍스트 메시지를 출력하기 위해 `st.write` 명령을 사용합니다:
 
 ```python
 st.write('Why hello there')
 ```
 
-and
+그리고
 
 ```python
 st.write('Goodbye')
 ```
 
-It is important to note that the above `st.write` statements are placed under the `if` and `else` conditions in order to perform the above mentioned process of alternative displaying of messages
+위 `st.write` 문장은 메시지를 대체적으로 표시하는 과정을 수행하기 위해 `if` 및 `else` 조건문 아래에 배치되는 것이 중요합니다.
 
-## Next steps
+## 다음 단계
 
-Now that you have created the Streamlit app locally, it's time to deploy it to [Streamlit Community Cloud](https://streamlit.io/cloud) as will be explained soon in an upcoming challenge.
+이제 로컬에서 Streamlit 앱을 만들었으니, 곧 다가올 챌린지에서 설명될 [Streamlit 커뮤니티 클라우드](https://streamlit.io/cloud)에 배포할 차례입니다.
 
-Because this is the first week of your challenge, we provide the full code (as shown in the code box above) and solution (the demo app) right inside this webpage.
+이번 주가 여러분의 챌린지 첫 주이므로, 위 코드 상자에 표시된 전체 코드와 이 웹페이지 내부의 솔루션(데모 앱)을 제공합니다.
 
-Moving forward in the next challenges, it is recommended that you first try implementing the Streamlit app yourself.
+다음 챌린지에서는 먼저 스스로 Streamlit 앱을 구현해 보는 것이 권장됩니다.
 
-Don't worry if you get stuck, you can always take a peek at the solution.
+걱정하지 마세요, 만약 막히면 솔루션을 살펴볼 수 있습니다.
 
-## References
+## 참고 자료
 
-Read about [`st.button`](https://docs.streamlit.io/library/api-reference/widgets/st.button) in the Streamlit API Documentation.
+Streamlit API 문서에서 [`st.button`](https://docs.streamlit.io/library/api-reference/widgets/st.button)에 대해 읽어보세요.
