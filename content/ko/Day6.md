@@ -1,34 +1,34 @@
-# Uploading your Streamlit app to GitHub
+# 스트림릿 앱을 GitHub에 업로드하기
 
 ## GitHub
 
-Git is a software for keeping track of all changes made to code (i.e. version control). GitHub is a Git repository hosting service that makes data and code publicly available on the web, which allows team collaboration and allow others to contribute to the repo.
+Git은 코드 변경 사항을 추적하기 위한 소프트웨어(즉, 버전 컨트롤)입니다. GitHub은 Git 저장소 호스팅 서비스로, 데이터 및 코드를 웹에 공개적으로 제공하여 팀 협업을 가능하게 하고 다른 사람들이 저장소에 기여할 수 있도록 합니다.
 
-Housing your Streamlit app in a GitHub repository will allow apps to be deployed to the cloud (the next challenge).
+스트림릿 앱을 GitHub 저장소에 보관하면 클라우드에 앱을 배포할 수 있습니다(다음 도전 과제).
 
-## Sign up for GitHub
+## GitHub 가입하기
 
-Firstly, sign up for a [GitHub](https://github.com/) account.
+먼저, [GitHub](https://github.com/) 계정에 가입하세요.
 
-## Create a GitHub repository
+## GitHub 저장소 만들기
 
-Follow the following steps to create a GitHub repository:
-- In the top right hand corner, click on the **"+"** icon which should reveal a drop-down menu, then click on **"New repository"** (*Figure 1*).
+다음 단계에 따라 GitHub 저장소를 만드세요:
+- 오른쪽 상단 모서리에서 **"+"** 아이콘을 클릭하면 드롭다운 메뉴가 나타나고, **"새 저장소"**를 클릭하세요 (*그림 1*).
 
-- This should bring to a new webpage called **"Create a new repository"**. Under the **"Repository name"** field, enter a name for your repository, for example, `helloworld` (***Figure 2***).
+- 이렇게 하면 **"새 저장소 만들기"**라는 새 웹페이지로 이동합니다. **"저장소 이름"** 필드에 저장소 이름을 입력하세요, 예를 들어 `helloworld` (***그림 2***).
 
-- Under the **"Initialize this repository with:"** field, tick on **"Add a README file"**.
+- **"이 저장소 초기화:"** 필드에서 **"README 파일 추가"**를 선택하세요.
 
-- Finally, click on **"Create repository"** (Figure 3).
+- 마지막으로, **"저장소 만들기"**를 클릭하세요 (그림 3).
 
-Your newly created repository will be available at `https://github.com/dataprofessor/helloworld` where `dataprofessor` is the username and `helloworld` is the repository name.
+새로 만든 저장소는 `https://github.com/dataprofessor/helloworld`에서 사용할 수 있으며, 여기서 `dataprofessor`는 사용자 이름이고 `helloworld`는 저장소 이름입니다.
 
-Below is the screenshot of the newly created repo (Figure 4):
+아래는 새로 만들어진 저장소의 스크린샷입니다 (그림 4):
 
-## Upload files to the GitHub repo
+## 파일을 GitHub 저장소에 업로드하기
 
-Slightly above the file table and adjacent to the green **Code** button, click on **Add file** > **Upload files** (Figure 5).
+파일 테이블 위쪽과 초록색 **코드** 버튼 옆에서 **파일 추가** > **파일 업로드**를 클릭하세요 (그림 5).
 
-This will bring you to a new webpage where the central box says ***Drag files here to add them to your repository*** and **choose your files**, which you can either drag-and-drop files into this box or click on the **choose your files** link to choose files from your local computer.
+이렇게 하면 중앙 상자에 ***여기에 파일을 끌어다 놓아 저장소에 추가하세요***와 **파일 선택**이라고 표시된 새 웹페이지로 이동합니다. 여기에서 파일을 이 상자로 드래그 앤 드롭하거나 **파일 선택** 링크를 클릭하여 로컬 컴퓨터에서 파일을 선택할 수 있습니다.
 
-Click on **Commit changes** to proceed further (Figure 6).
+**변경 사항 커밋**을 클릭하여 계속 진행하세요 (그림 6).
