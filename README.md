@@ -11,5 +11,6 @@
 * [中文](readmes/zh/README.md)
 * [polski](readmes/pl/README.md)
 * [español](readmes/es/README.md)
+* [한국어](readmes/ko/README.md)
 
 
