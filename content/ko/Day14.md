@@ -1,31 +1,31 @@
-# Streamlit Components
+# Streamlit 컴포넌트
 
-Components are third-party Python modules that extend what's possible with Streamlit [[1](https://docs.streamlit.io/library/components)].
+컴포넌트는 Streamlit의 가능성을 확장하는 타사 Python 모듈입니다 [[1†source]].
 
-## What Streamlit components are available?
+## 사용 가능한 Streamlit 컴포넌트는 무엇인가요?
 
-There are several dozens of Streamlit components featured on Streamlit's website [[2](https://streamlit.io/components)].
+Streamlit 웹사이트에는 여러 가지 Streamlit 컴포넌트들이 소개되어 있습니다 [[2†source]].
 
-Fanilo (a Streamlit Creator) curated an amazing list of Streamlit components on a wiki post [[3](https://discuss.streamlit.io/t/streamlit-components-community-tracker/4634)] that lists about 85 Streamlit components as of April 2022.
+Fanilo(한 Streamlit 크리에이터)는 위키 게시글에서 약 85개의 Streamlit 컴포넌트를 정리한 놀라운 목록을 만들었습니다(2022년 4월 기준) [[3†source]].
 
-## How to use?
+## 사용 방법은?
 
-Streamlit components are just a pip-install away.
+Streamlit 컴포넌트는 pip을 통해 간단히 설치할 수 있습니다.
 
-In this tutorial, let's get you started in using the `streamlit_pandas_profiling` component [[4](https://share.streamlit.io/okld/streamlit-gallery/main?p=pandas-profiling)].
+이 튜토리얼에서는 `streamlit_pandas_profiling` 컴포넌트 [[4†source]] 사용을 시작하는 방법을 안내해드리겠습니다.
 
-#### Install the component 
+#### 컴포넌트 설치 
 
 ```bash
 pip install streamlit_pandas_profiling
 ```
 
-## Demo app
+## 데모 앱
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/streamlit-components/)
 
-## Code
-Here's how to build a Streamlit app using a component:
+## 코드
+컴포넌트를 사용하여 Streamlit 앱을 구축하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 import pandas as pd
@@ -40,8 +40,8 @@ pr = df.profile_report()
 st_profile_report(pr)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` as well as other libraries used in the app like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 import pandas as pd
@@ -49,36 +49,36 @@ import pandas_profiling
 from streamlit_pandas_profiling import st_profile_report
 ```
 
-This is followed by creating a header text for the app:
+이는 앱에 대한 헤더 텍스트를 만드는 것으로 이어집니다:
 ```python
 st.header('`streamlit_pandas_profiling`')
 ```
 
-Next, we load in the Penguins dataset using the `read_csv` command of `pandas`.
+다음으로, 펭귄 데이터셋을 `pandas`의 `read_csv` 명령어를 사용하여 불러옵니다.
 ```python
 df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/penguins_cleaned.csv')
 ```
 
-Finally, the pandas profiling report is generated via the `profile_report()` command and displayed using `st_profile_report`:
+마지막으로, `profile_report()` 명령어를 통해 생성된 판다스 프로파일링 보고서를 `st_profile_report`를 사용하여 표시합니다:
 ```python
 pr = df.profile_report()
 st_profile_report(pr)
 ```
 
-## Making your own Components
+## 자체 컴포넌트 만들기
 
-If you're interested in making your own component, please check out the following resources:
-- [Create a Component](https://docs.streamlit.io/library/components/create)
-- [Publish a Component](https://docs.streamlit.io/library/components/publish)
-- [Components API](https://docs.streamlit.io/library/components/components-api)
-- [Blog post on Components](https://blog.streamlit.io/introducing-streamlit-components/)
+자체 컴포넌트를 만들고 싶다면, 다음 자료를 확인하세요:
+- [컴포넌트 만들기](https://docs.streamlit.io/library/components/create)
+- [컴포넌트 게시하기](https://docs.streamlit.io/library/components/publish)
+- [컴포넌트 API](https://docs.streamlit.io/library/components/components-api)
+- [컴포넌트에 관한 블로그 글](https://blog.streamlit.io/introducing-streamlit-components/)
 
-Alternatively, if you prefer to learn using videos, our engineer Tim Conkling has put together some amazing tutorials:
-- [How to build a Streamlit component | Part 1: Setup and Architecture](https://youtu.be/BuD3gILJW-Q)
-- [How to build a Streamlit component | Part 2: Part 2: Make a Slider Widget](https://youtu.be/QjccJl_7Jco)
+비디오를 통해 배우는 것을 선호한다면, 엔지니어 Tim Conkling이 만든 훌륭한 튜토리얼을 확인해 보세요:
+- [Streamlit 컴포넌트 만들기 | 1부: 설정 및 아키텍처](https://youtu.be/BuD3gILJW-Q)
+- [Streamlit 컴포넌트 만들기 | 2부: 슬라이더 위젯 만들기](https://youtu.be/QjccJl_7Jco)
 
-## Further reading about Components
-1. [Streamlit Components - API Documentation](https://docs.streamlit.io/library/components)
-2. [Featured Streamlit Components](https://streamlit.io/components)
-3. [Streamlit Components - Community Tracker](https://discuss.streamlit.io/t/streamlit-components-community-tracker/4634)
+## 컴포넌트에 관한 추가 정보
+1. [Streamlit 컴포넌트 - API 문서](https://docs.streamlit.io/library/components)
+2. [주요 Streamlit 컴포넌트](https://streamlit.io/components)
+3. [Streamlit 컴포넌트 - 커뮤니티 추적기](https://discuss.streamlit.io/t/streamlit-components-community-tracker/4634)
 4. [`streamlit_pandas_profiling`](https://share.streamlit.io/okld/streamlit-gallery/main?p=pandas-profiling)
