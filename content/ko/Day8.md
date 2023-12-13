@@ -1,24 +1,23 @@
 # st.slider
 
-`st.slider` allows the display of a slider input widget.
+`st.slider`는 슬라이더 입력 위젯을 표시합니다.
 
-The following data types are supported: int, float, date, time, and datetime.
+지원되는 데이터 유형은 int, float, date, time 및 datetime입니다.
 
-## What we're building?
+## 우리가 만드는 것은?
 
-A simple app that shows the various ways on how to accept user input by adjusting the slider widget.
+슬라이더 위젯을 조정하여 사용자 입력을 받는 다양한 방법을 보여주는 간단한 앱입니다.
 
-Flow of the app:
-1. User selects value by adjusting the slider widget
-2. App prints out the selected value
+앱의 흐름:
+1. 사용자가 슬라이더 위젯을 조정하여 값을 선택합니다.
+2. 앱이 선택된 값을 출력합니다.
 
-## Demo app
+## 데모 앱
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.slider/)
 
-
-## Code
-Here's how to use st.slider:
+## 코드
+st.slider 사용 방법은 다음과 같습니다:
 
 ```python
 import streamlit as st
@@ -26,131 +25,130 @@ from datetime import time, datetime
 
 st.header('st.slider')
 
-# Example 1
+# 예제 1
 
 st.subheader('Slider')
 
-age = st.slider('How old are you?', 0, 130, 25)
-st.write("I'm ", age, 'years old')
+age = st.slider('당신의 나이는?', 0, 130, 25)
+st.write("나는 ", age, '살입니다')
 
-# Example 2
+# 예제 2
 
-st.subheader('Range slider')
+st.subheader('범위 슬라이더')
 
 values = st.slider(
-     'Select a range of values',
+     '값의 범위를 선택하세요',
      0.0, 100.0, (25.0, 75.0))
-st.write('Values:', values)
+st.write('값:', values)
 
-# Example 3
+# 예제 3
 
-st.subheader('Range time slider')
+st.subheader('시간 범위 슬라이더')
 
 appointment = st.slider(
-     "Schedule your appointment:",
+     "약속을 예약하세요:",
      value=(time(11, 30), time(12, 45)))
-st.write("You're scheduled for:", appointment)
+st.write("예약된 시간:", appointment)
 
-# Example 4
+# 예제 4
 
-st.subheader('Datetime slider')
+st.subheader('날짜 및 시간 슬라이더')
 
 start_time = st.slider(
-     "When do you start?",
+     "언제 시작하시겠습니까?",
      value=datetime(2020, 1, 1, 9, 30),
      format="MM/DD/YY - hh:mm")
-st.write("Start time:", start_time)
+st.write("시작 시간:", start_time)
 
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 from datetime import time, datetime
 ```
 
-This is followed by creating a header text for the app:
+이는 앱에 대한 헤더 텍스트를 만드는 것으로 이어집니다:
 ```python
 st.header('st.slider')
 ```
 
-**Example 1**
+**예제 1**
 
-Slider:
+슬라이더:
 
 ```python
 st.subheader('Slider')
 
-age = st.slider('How old are you?', 0, 130, 25)
-st.write("I'm ", age, 'years old')
+age = st.slider('당신의 나이는?', 0, 130, 25)
+st.write("나는 ", age, '살입니다')
 ```
 
-As we can see, the `st.slider()` command
-is used to collect user input about the age of users.
+여기에서 `st.slider()` 명령어는 사용자의 나이에 대한 입력을 수집하는 데 사용됩니다.
 
-The first input argument displays the text just above the **slider** widget asking `'How old are you?'`.
+첫 번째 입력 인수는 슬라이더 위젯 바로 위에 표시되는 텍스트로 `'당신의 나이는?'`을 묻습니다.
 
-The following three integers `0, 130, 25` represents the minimum, maximum and default values, respectively.
+다음 세 정수 `0, 130, 25`는 각각 최소값, 최대값 및 기본값을 나타냅니다.
 
-**Example 2**
+**예제 2**
 
-Range slider:
+범위 슬라이더:
 
 ```python
-st.subheader('Range slider')
+st.subheader('범위 슬라이더')
 
 values = st.slider(
-     'Select a range of values',
+     '값의 범위를 선택하세요',
      0.0, 100.0, (25.0, 75.0))
-st.write('Values:', values)
+st.write('값:', values)
 ```
 
-The range slider allow selection of a lower and upper bound value pair.
+범위 슬라이더는 하한 및 상한 값 쌍을 선택할 수 있게 합니다.
 
-The first input argument displays the text just above the **range slider** widget asking `'Select a range of values'`.
+첫 번째 입력 인수는 범위 슬라이더 위젯 바로 위에 표시되는 텍스트로 `'값의 범위를 선택하세요'`를 묻습니다.
 
-The following three arguments `0.0, 100.0, (25.0, 75.0)` represents the minimum and maximum values while the last tuple denotes the default values to use as the selected lower (25.0) and upper (75.0) bound values.
+다음 세 인수 `0.0, 100.0, (25.0, 75.0)`는 최소값과 최대값을 나타내며, 마지막 튜플은 하한(25.0) 및 상한(75.0) 값으로 사용할 기본값을 나타냅니다.
 
-**Example 3**
+**예제 3**
 
-Range time slider:
+시간 범위 슬라이더:
 
 ```python
-st.subheader('Range time slider')
+st.subheader('시간 범위 슬라이더')
 
 appointment = st.slider(
-     "Schedule your appointment:",
+     "약속을 예약하세요:",
      value=(time(11, 30), time(12, 45)))
-st.write("You're scheduled for:", appointment)
+st.write("예약된 시간:", appointment)
 ```
 
-The range time slider allows selection of a lower and upper bound value pair of datetime.
+시간 범위 슬라이더는 날짜 및 시간의 하한 및 상한 값 쌍을 선택할 수 있게 합니다.
 
-The first input argument displays the text just above the **range time slider** widget asking `'Schedule your appointment:`.
+첫 번째 입력 인수는 시간 범위 슬라이더 위젯 바로 위에 표시되는 텍스트로 `'약속을 예약하세요:'`를 묻습니다.
 
-The default values for the lower and upper bound value pairs of datetime are set to 11:30 and 12:45, respectively.
+하한 및 상한 시간 쌍의 기본값은 각각 11:30과 12:45로 설정됩니다.
 
-**Example 4**
+**예제 4**
 
-Datetime slider:
+날짜 및 시간 슬라이더:
 
 ```python
-st.subheader('Datetime slider')
+st.subheader('날짜 및 시간 슬라이더')
 
 start_time = st.slider(
-     "When do you start?",
+     "언제 시작하시겠습니까?",
      value=datetime(2020, 1, 1, 9, 30),
      format="MM/DD/YY - hh:mm")
-st.write("Start time:", start_time)
+st.write("시작 시간:", start_time)
 ```
 
-The datetime slider allows selection of a datetime.
+날짜 및 시간 슬라이더는 날짜 및 시간을 선택할 수 있게 합니다.
 
-The first input argument displays the text just above the **datetime** slider widget asking `'When do you start?'`.
+첫 번째 입력 인수는 날짜 및 시간 슬라이더 위젯 바로 위에 표시되는 텍스트로 `'언제 시작하시겠습니까?'`를 묻습니다.
 
-The default value for the datetime was set using the `value` option to be January 1, 2020 at 9:30
+날짜 및 시간의 기본값은 `value` 옵션을 사용하여 2020년 1월 1일 오전 9시 30분으로 설정되었습니다.
 
-## Further reading
-You can also explore the following related widget:
+## 추가 정보
+다음과 관련된 위젯도 탐색해 볼 수 있습니다:
 - [`st.select_slider`](https://docs.streamlit.io/library/api-reference/widgets/st.select_slider)
