@@ -1,13 +1,13 @@
 # st.secrets
 
-`st.secrets` allows you to store confidential information such as API keys, database passwords or other credentials.
+`st.secrets`를 사용하면 API 키, 데이터베이스 비밀번호 또는 기타 자격 증명과 같은 기밀 정보를 저장할 수 있습니다.
 
-## Demo app
+## 데모 앱
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.secrets/)
 
-## Code
-Here's how to use `st.secrets`:
+## 코드
+`st.secrets` 사용 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 
@@ -16,26 +16,26 @@ st.title('st.secrets')
 st.write(st.secrets['message'])
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a title text for the app:
+이는 앱에 대한 제목 텍스트를 만드는 것으로 이어집니다:
 ```python
 st.title('st.secrets')
 ```
 
-Finally, we'll be displaying the stored secrets:
+마지막으로, 저장된 기밀 정보를 표시합니다:
 ```python
 st.write(st.secrets['message'])
 ```
 
-It should be noted that, secrets can be stored in Streamlit Community Cloud as shown in the screenshots shown below.
+Streamlit Community Cloud에서 아래 스크린샷과 같이 기밀 정보를 저장할 수 있다는 점을 유의해야 합니다.
 
-If working locally, they can be stored in `.streamlit/secrets.toml`, but make sure to avoid uploading this to a GitHub repo when deploying the app.
+로컬에서 작업하는 경우, `.streamlit/secrets.toml`에 저장할 수 있지만, 앱을 배포할 때 GitHub 리포지토리에 업로드하지 않도록 주의해야 합니다.
 
-## Further reading
-- [Add secrets to your Streamlit apps](https://blog.streamlit.io/secrets-in-sharing-apps/)
-- [Secrets management](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)
+## 추가 정보
+- [Streamlit 앱에 기밀 정보 추가하기](https://blog.streamlit.io/secrets-in-sharing-apps/)
+- [기밀 정보 관리](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)
