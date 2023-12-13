@@ -139,9 +139,7 @@ st.write(c)
 
 ## 추가 읽기
 
-[`st.write`](https://
-
-docs.streamlit.io/library/api-reference/write-magic/st.write) 외에도, 다른 방법으로 텍스트를 표시하는 방법을 탐색할 수 있습니다:
+[`st.write`](https://docs.streamlit.io/library/api-reference/write-magic/st.write) 외에도, 다른 방법으로 텍스트를 표시하는 방법을 탐색할 수 있습니다:
 
 - [`st.markdown`](https://docs.streamlit.io/library/api-reference/text/st.markdown)
 - [`st.header`](https://docs.streamlit.io/library/api-reference/text/st.header)
