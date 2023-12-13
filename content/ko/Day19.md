@@ -1,112 +1,114 @@
-# How to layout your Streamlit app
+# Streamlit 앱 레이아웃 구성하기
 
-In this tutorial, we're going to use the following commands to layout our Streamlit app:
-- `st.set_page_config(layout="wide")` - Displays the contents of the app in wide mode (otherwise by default, the contents are encapsulated in a fixed width box.
-- `st.sidebar` - Places the widgets or text/image displays in the sidebar.
-- `st.expander` - Places text/image displays inside a collapsible container box.
-- `st.columns` - Creates a tabular space (or column) within which contents can be placed inside.
+이 튜토리얼에서는 다음 명령어를 사용하여 Streamlit 앱의 레이아웃을 구성합니다:
+- `st.set_page_config(layout="wide")` - 앱의 내용을 넓은 모드로 표시합니다 (기본적으로 내용은 고정된 너비의 박스에 포함됩니다).
+- `st.sidebar` - 위젯이나 텍스트/이미지 디스플레이를 사이드바에 배치합니다.
+- `st.expander` - 텍스트/이미지 디스플레이를 접을 수 있는 컨테이너 박스 내에 배치합니다.
+- `st.columns` - 컨텐츠를 내부에 배치할 수 있는 표 형태의 공간(또는 열)을 생성합니다.
 
-## Demo app
+## 데모 앱
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/streamlit-layout/)
 
-## Code
-Here's how to customize the layout of your Streamlit app:
+## 코드
+Streamlit 앱의 레이아웃을 사용자 정의하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 
 st.set_page_config(layout="wide")
 
-st.title('How to layout your Streamlit app')
+st.title('Streamlit 앱 레이아웃 구성하기')
 
-with st.expander('About this app'):
-  st.write('This app shows the various ways on how you can layout your Streamlit app.')
+with st.expander('이 앱에 대하여'):
+  st.write('이 앱은 Streamlit 앱을 구성하는 다양한 방법을 보여줍니다.')
   st.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=250)
 
-st.sidebar.header('Input')
-user_name = st.sidebar.text_input('What is your name?')
-user_emoji = st.sidebar.selectbox('Choose an emoji', ['', '😄', '😆', '😊', '😍', '😴', '😕', '😱'])
-user_food = st.sidebar.selectbox('What is your favorite food?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
+st.sidebar.header('입력')
+user_name = st.sidebar.text_input('당신의 이름은 무엇인가요?')
+user_emoji = st.sidebar.selectbox('이모티콘 선택', ['', '😄', '😆', '😊', '😍', '😴', '😕', '😱'])
+user_food = st.sidebar.selectbox('가장 좋아하는 음식은?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
 
-st.header('Output')
+st.header('출력')
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
   if user_name != '':
-    st.write(f'👋 Hello {user_name}!')
+    st.write(f'👋 안녕하세요 {user_name}님!')
   else:
-    st.write('👈  Please enter your **name**!')
+    st.write('👈  **이름**을 입력해 주세요!')
 
 with col2:
   if user_emoji != '':
-    st.write(f'{user_emoji} is your favorite **emoji**!')
+    st.write(f'{user_emoji}는 당신이 좋아하는 **이모티콘**입니다!')
   else:
-    st.write('👈 Please choose an **emoji**!')
+    st.write('👈 **이모티콘**을 선택해 주세요!')
 
 with col3:
   if user_food != '':
-    st.write(f'🍴 **{user_food}** is your favorite **food**!')
+    st.write(f'🍴 **{user_food}**은 당신이 좋아하는 **음식**입니다!')
   else:
-    st.write('👈 Please choose your favorite **food**!')
+    st.write('👈 가장 좋아하는 **음식**을 선택해 주세요!')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 ```
 
-We'll start by first defining the page layout to be displayed in the `wide` mode, which allows the page content to expand to the browser's width.
+우선 페이지 레이아웃을 `wide` 모드로 정의하여 페이지 콘텐츠가 브라우저의 너비로 확장되도록 합니다.
 ```python
 st.set_page_config(layout="wide")
 ```
 
-Next, we'll give the Streamlit app a title.
+다음으로, Streamlit 앱에 제목을 부여합니다.
 ```python
-st.title('How to layout your Streamlit app')
+st.title('Streamlit 앱 레이아웃 구성하기')
 ```
 
-An expandable box titled `About this app` is placed under the app title. Upon expansion, we'll see additional details inside.
+앱 제목 아래에 `이 앱에 대하여`라는 제목의 확장 가능한 상자를 배치합니다. 확장 시 내부에서 추가 세부 정보를 볼 수 있습니다.
 ```python
-with st.expander('About this app'):
-  st.write('This app shows the various ways on how you can layout your Streamlit app.')
+with st.expander('이 앱에 대하여'):
+  st.write('이 앱은 Streamlit 앱을 구성하는 다양한 방법을 보여줍니다.')
   st.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=250)
 ```
 
-Input widgets for accepting user input is placed in the sidebar as specified by using the `st.sidebar` command before the Streamlit commands `text_input` and `selectbox`. Input values entered or selected by the user are assigned and stored in the `user_name`, `user_emoji` and `user_food` variables.
+사용자 입력을 받기 위한 입력 위젯은 `st.sidebar` 명령어를 사용하여 사이드바에 배치됩니다. 사용자가 입력하거나 선택한 입력값은 `user_name`, `user_emoji`, `user_food` 변수에 할당되어 저장됩니다.
 ```python
-st.sidebar.header('Input')
-user_name = st.sidebar.text_input('What is your name?')
-user_emoji = st.sidebar.selectbox('Choose an emoji', ['', '😄', '😆', '😊', '😍', '😴', '😕', '😱'])
-user_food = st.sidebar.selectbox('What is your favorite food?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
+st.sidebar.header('입력')
+user_name = st.sidebar.text_input('당신의 이름은 무엇인가요?')
+user_emoji = st.sidebar.selectbox('이모티콘 선택', ['', '😄', '😆', '😊', '😍', '😴', '😕', '😱'])
+user_food = st.sidebar.selectbox('가장 좋아하는 음식은?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
 ```
 
-Finally, we'll create 3 columns using the `st.columns` command which corresponds to `col1`, `col2` and `col3`. Then, we assign contents to each of the column by creating individual code blocks starting with the `with` statement. Underneath this, we create conditional statements that display 1 of 2 alternative text depending on whether the user had provided their input data (specified in the sidebar) or not. By default, the page displays text under the `else` statement. Upon providing user input, the corresponding information that the user gives to the app is displayed under the `Output` header text.
+마지막으로, `st.columns` 명령어를 사용하여 `col1`, `col2`, `col3`에 해당하는 3개의 열을 생성합니다. 그런 다음, 각 열에 내용을 배치하기 위해 `with` 문으로 시작하는 개별 코드 블록을 생성합니다. 이 하에 사용자가 사이드바에서 제공한 입력 데이터를 제공했는지 여부에 따라 2가지 대체 텍스트 중 하나를 표시하는 조건문을 생성합니다. 기본적으로 페이지는 `else` 문 아래의 텍스트를 표시합니다. 사용자가 입력을 제공하면 `Output` 헤더 텍스트 아래에 앱에 제공한 사용자 정보가 표시됩니다.
 ```python
-st.header('Output')
+st.header('출력')
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
   if user_name != '':
-    st.write(f'👋 Hello {user_name}!')
+    st.write(f'👋 안녕하세요 {user_name}님!')
   else:
-    st.write('👈  Please enter your **name**!')
+    st.write('👈  **이름**을 입력해 주세요!')
 
 with col2:
   if user_emoji != '':
-    st.write(f'{user_emoji} is your favorite **emoji**!')
+    st.write(f'{user_emoji}는 당신이
+
+ 좋아하는 **이모티콘**입니다!')
   else:
-    st.write('👈 Please choose an **emoji**!')
+    st.write('👈 **이모티콘**을 선택해 주세요!')
 
 with col3:
   if user_food != '':
-    st.write(f'🍴 **{user_food}** is your favorite **food**!')
+    st.write(f'🍴 **{user_food}**은 당신이 좋아하는 **음식**입니다!')
   else:
-    st.write('👈 Please choose your favorite **food**!')
+    st.write('👈 가장 좋아하는 **음식**을 선택해 주세요!')
 ```
-It is also worthy to note that `f` strings were used to combine pre-canned text together with the user provided values. 
+사용자가 제공한 값과 미리 준비된 텍스트를 함께 결합하기 위해 `f` 문자열을 사용했다는 점을 언급할 가치가 있습니다.
 
-## Further reading
-- [Layouts and Containers](https://docs.streamlit.io/library/api-reference/layout)
+## 추가 정보
+- [레이아웃 및 컨테이너](https://docs.streamlit.io/library/api-reference/layout)
