@@ -1,14 +1,14 @@
-# Building your first Streamlit app
+# 첫 번째 Streamlit 앱 만들기
 
-## Fire up your IDE
+## 통합 개발 환경(IDE) 실행
 
-Fire up your IDE whether it be Atom, VS Code or even a cloud IDE such as GitPod or GitHub.dev.
+Atom, VS Code 또는 GitPod, GitHub.dev 같은 클라우드 IDE 등 어떤 IDE든 실행하세요.
 
-Create a file called `streamlit_app.py`
+`streamlit_app.py`라는 파일을 생성합니다.
 
-## Entering your first lines of code
+## 첫 번째 코드 입력
 
-To the newly created file, enter the following lines of code:
+새로 생성된 파일에 다음 코드를 입력하세요:
 
 ```
 import streamlit as st
@@ -16,16 +16,16 @@ import streamlit as st
 st.write('Hello world!')
 ```
 
-Save the file.
+파일을 저장합니다.
 
-## Fire up the command line terminal
+## 커맨드 라인 터미널 실행
 
-To the terminal, enter the following:
+터미널에 다음을 입력하세요:
 
 ```
 streamlit run streamlit_app.py
 ```
 
-A browser window should pop-up showing the newly created Streamlit app.
+브라우저 창이 팝업되며 새로 만든 Streamlit 앱이 표시됩니다.
 
-**Congratulations!** You have just created your first Streamlit app!
+**축하합니다!** 당신은 방금 첫 번째 Streamlit 앱을 만들었습니다!
