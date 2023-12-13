@@ -1,68 +1,68 @@
 # st.checkbox
 
-`st.checkbox` displays a checkbox widget.
+`st.checkbox`는 체크박스 위젯을 표시합니다.
 
-## Demo app
+## 데모 앱
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.checkbox/)
 
-## Code
-Here's how to use `st.checkbox`:
+## 코드
+`st.checkbox` 사용 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 
 st.header('st.checkbox')
 
-st.write ('What would you like to order?')
+st.write ('주문하고 싶은 것이 무엇인가요?')
 
-icecream = st.checkbox('Ice cream')
-coffee = st.checkbox('Coffee')
-cola = st.checkbox('Cola')
+icecream = st.checkbox('아이스크림')
+coffee = st.checkbox('커피')
+cola = st.checkbox('콜라')
 
 if icecream:
-     st.write("Great! Here's some more 🍦")
+     st.write("좋아요! 여기 더 많은 🍦")
     
 if coffee: 
-     st.write("Okay, here's some coffee ☕")
+     st.write("알겠습니다, 여기 커피 있어요 ☕")
 
 if cola:
-     st.write("Here you go 🥤")
+     st.write("여기 있어요 🥤")
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+이는 앱에 대한 헤더 텍스트를 만드는 것으로 이어집니다:
 ```python
 st.header('st.checkbox')
 ```
 
-Next, we're going to ask a question via `st.write':
+다음으로, `st.write`를 통해 질문을 할 것입니다:
 ```python
-st.write ('What would you like to order?')
+st.write ('주문하고 싶은 것이 무엇인가요?')
 ```
 
-We're then going to provide some menu items to tick on:
+그 다음으로, 선택할 수 있는 메뉴 항목들을 제공합니다:
 ```python
-icecream = st.checkbox('Ice cream')
-coffee = st.checkbox('Coffee')
-cola = st.checkbox('Cola')
+icecream = st.checkbox('아이스크림')
+coffee = st.checkbox('커피')
+cola = st.checkbox('콜라')
 ```
 
-Finally, we're going to print custom text depending on which checkbox was ticked on:
+마지막으로, 어떤 체크박스가 선택되었는지에 따라 맞춤형 텍스트를 출력합니다:
 ```python
 if icecream:
-     st.write("Great! Here's some more 🍦")
+     st.write("좋아요! 여기 더 많은 🍦")
     
 if coffee: 
-     st.write("Okay, here's some coffee ☕")
+     st.write("알겠습니다, 여기 커피 있어요 ☕")
 
 if cola:
-     st.write("Here you go 🥤")
+     st.write("여기 있어요 🥤")
 ```  
 
-## Further reading
+## 추가 정보
 - [`st.checkbox`](https://docs.streamlit.io/library/api-reference/widgets/st.checkbox)
