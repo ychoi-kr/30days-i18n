@@ -1,12 +1,12 @@
-# Spin up a cloud development environment
+# 클라우드 개발 환경 구축
 
 ### GitPod
-To spin up a development environment on the cloud, we can use [GitPod](https://www.gitpod.io/) and this can be done simply by clicking on the following link:
-- Try it 👉 https://gitpod.io/#/https://github.com/dataprofessor/streamlit101/
+클라우드에서 개발 환경을 구축하기 위해 [GitPod](https://www.gitpod.io/)를 사용할 수 있으며, 아래 링크를 클릭하여 간단하게 수행할 수 있습니다:
+- 시도해보기 👉 https://gitpod.io/#/https://github.com/dataprofessor/streamlit101/
 
-As you can see from the URL above, a GitHub repo URL is appended after `https://gitpod.io/#/` which essentially allow GitPod to spin up a development environment using instructions contained within the GitHub repo URL (namely in the `requirements.txt` file that specifically lists the Python libraries to install).
+위 URL에서 볼 수 있듯이, GitHub 저장소 URL이 `https://gitpod.io/#/` 뒤에 추가되며, 이는 GitPod가 GitHub 저장소 URL에 포함된 지시사항(특히 Python 라이브러리를 설치하도록 지정하는 `requirements.txt` 파일)을 사용하여 개발 환경을 구축하게 합니다.
 
-> Note: There are other similar cloud development environment such as:
+> 참고: 다른 유사한 클라우드 개발 환경도 있습니다:
 > - [GitHub Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/setting-up-your-python-project-for-codespaces)
 > - [Replit](https://replit.com/)
 > - [Cloud9](https://aws.amazon.com/cloud9/)
