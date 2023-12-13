@@ -350,93 +350,93 @@ msgstr[0] ""
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:281
 msgid "January"
-msgstr ""
+msgstr "1월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:282
 msgid "February"
-msgstr ""
+msgstr "2월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:283
 msgid "March"
-msgstr ""
+msgstr "3월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:284
 msgid "April"
-msgstr ""
+msgstr "4월"
 
 # | msgid "Day"
 #: venv/lib/python3.10/site-packages/tornado/locale.py:285
 #, fuzzy
 msgid "May"
-msgstr "日"
+msgstr "5월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:286
 msgid "June"
-msgstr ""
+msgstr "6월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:287
 msgid "July"
-msgstr ""
+msgstr "7월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:288
 msgid "August"
-msgstr ""
+msgstr "8월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:289
 msgid "September"
-msgstr ""
+msgstr "9월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:290
 msgid "October"
-msgstr ""
+msgstr "10월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:291
 msgid "November"
-msgstr ""
+msgstr "11월"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:292
 msgid "December"
-msgstr ""
+msgstr "12월"
 
 # | msgid "Day"
 #: venv/lib/python3.10/site-packages/tornado/locale.py:295
 #, fuzzy
 msgid "Monday"
-msgstr "日"
+msgstr "월요일"
 
 # | msgid "Day"
 #: venv/lib/python3.10/site-packages/tornado/locale.py:296
 #, fuzzy
 msgid "Tuesday"
-msgstr "日"
+msgstr "화요일"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:297
 msgid "Wednesday"
-msgstr ""
+msgstr "수요일"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:298
 msgid "Thursday"
-msgstr ""
+msgstr "목요일"
 
 # | msgid "Day"
 #: venv/lib/python3.10/site-packages/tornado/locale.py:299
 #, fuzzy
 msgid "Friday"
-msgstr "日"
+msgstr "금요일"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:300
 msgid "Saturday"
-msgstr ""
+msgstr "토요일"
 
 # | msgid "Day"
 #: venv/lib/python3.10/site-packages/tornado/locale.py:301
 #, fuzzy
 msgid "Sunday"
-msgstr "日"
+msgstr "일요일"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:371
 msgid "1 second ago"
-msgstr ""
+msgstr "1초 전"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:377
 msgid "1 minute ago"
@@ -444,7 +444,7 @@ msgstr ""
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:382
 msgid "1 hour ago"
-msgstr ""
+msgstr "1시간 전"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:385
 #, python-format
@@ -453,17 +453,17 @@ msgstr ""
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:387
 msgid "yesterday"
-msgstr ""
+msgstr "어제"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:387
 #, python-format
 msgid "yesterday at %(time)s"
-msgstr ""
+msgstr "어제 %(time)"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:389
 #, python-format
 msgid "%(weekday)s"
-msgstr ""
+msgstr "%(weekday)s"
 
 #: venv/lib/python3.10/site-packages/tornado/locale.py:389
 #, python-format
@@ -524,8 +524,8 @@ msgid "club"
 msgstr ""
 
 #~ msgid "Day"
-#~ msgstr "日"
+#~ msgstr "일"
 
 #~ msgid "# 🗓️ Day"
-#~ msgstr "日目 🗓️"
+#~ msgstr "일차 🗓️"
 
