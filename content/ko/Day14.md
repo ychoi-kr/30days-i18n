@@ -1,18 +1,18 @@
 # Streamlit 컴포넌트
 
-컴포넌트는 Streamlit의 가능성을 확장하는 타사 Python 모듈입니다 [[1†source]].
+컴포넌트는 Streamlit의 가능성을 확장하는 타사 Python 모듈입니다[[1](https://docs.streamlit.io/library/components)].
 
 ## 사용 가능한 Streamlit 컴포넌트는 무엇인가요?
 
-Streamlit 웹사이트에는 여러 가지 Streamlit 컴포넌트들이 소개되어 있습니다 [[2†source]].
+Streamlit 웹사이트에는 여러 가지 Streamlit 컴포넌트들이 소개되어 있습니다[[2](https://streamlit.io/components)].
 
-Fanilo(한 Streamlit 크리에이터)는 위키 게시글에서 약 85개의 Streamlit 컴포넌트를 정리한 놀라운 목록을 만들었습니다(2022년 4월 기준) [[3†source]].
+Fanilo(한 Streamlit 크리에이터)는 위키 게시글에서 약 85개의 Streamlit 컴포넌트를 정리한 놀라운 목록을 만들었습니다(2022년 4월 기준)[[3](https://discuss.streamlit.io/t/streamlit-components-community-tracker/4634)].
 
 ## 사용 방법은?
 
 Streamlit 컴포넌트는 pip을 통해 간단히 설치할 수 있습니다.
 
-이 튜토리얼에서는 `streamlit_pandas_profiling` 컴포넌트 [[4†source]] 사용을 시작하는 방법을 안내해드리겠습니다.
+이 튜토리얼에서는 `streamlit_pandas_profiling` 컴포넌트[[4](https://share.streamlit.io/okld/streamlit-gallery/main?p=pandas-profiling)] 사용을 시작하는 방법을 안내해드리겠습니다.
 
 #### 컴포넌트 설치 
 
