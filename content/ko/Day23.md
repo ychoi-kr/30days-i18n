@@ -1,99 +1,99 @@
 # st.experimental_get_query_params
 
-`st.experimental_get_query_params` allows the retrieval of query parameters directly from the URL of the user's browser.
+`st.experimental_get_query_params`는 사용자 브라우저의 URL에서 직접 쿼리 매개변수를 검색할 수 있게 해줍니다.
 
-## Demo app
+## 데모 앱
 
-1. The following link loads the demo app with no query parameters (notice the error message):
+1. 다음 링크는 쿼리 매개변수가 없는 데모 앱을 로드합니다 (오류 메시지 주목):
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.experimental_get_query_params/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.experimental_get_query_params/)
 
-2. The following link loads the demo app with query parameters (no error message here):
+2. 다음 링크는 쿼리 매개변수가 있는 데모 앱을 로드합니다 (여기서는 오류 메시지 없음):
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk)
 
-## Code
-Here's how to use `st.experimental_get_query_params`:
+## 코드
+`st.experimental_get_query_params`를 사용하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 
 st.title('st.experimental_get_query_params')
 
-with st.expander('About this app'):
-  st.write("`st.experimental_get_query_params` allows the retrieval of query parameters directly from the URL of the user's browser.")
+with st.expander('이 앱에 대하여'):
+  st.write("`st.experimental_get_query_params`는 사용자 브라우저의 URL에서 직접 쿼리 매개변수를 검색할 수 있게 해줍니다.")
 
-# 1. Instructions
-st.header('1. Instructions')
+# 1. 지침
+st.header('1. 지침')
 st.markdown('''
-In the above URL bar of your internet browser, append the following:
+인터넷 브라우저의 URL 바에서 다음을 추가하세요:
 `?firstname=Jack&surname=Beanstalk`
-after the base URL `http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/`
-such that it becomes 
-`http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk`
+기본 URL `http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/` 뒤에 추가하여
+`http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk`가 되도록 합니다.
 ''')
 
 
-# 2. Contents of st.experimental_get_query_params
-st.header('2. Contents of st.experimental_get_query_params')
+# 2. st.experimental_get_query_params의 내용
+st.header('2. st.experimental_get_query_params의 내용')
 st.write(st.experimental_get_query_params())
 
 
-# 3. Retrieving and displaying information from the URL
-st.header('3. Retrieving and displaying information from the URL')
+# 3. URL에서 정보 검색 및 표시
+st.header('3. URL에서 정보 검색 및 표시')
 
 firstname = st.experimental_get_query_params()['firstname'][0]
 surname = st.experimental_get_query_params()['surname'][0]
 
-st.write(f'Hello **{firstname} {surname}**, how are you?')
+st.write(f'안녕하세요 **{firstname} {surname}**, 어떠세요?')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 임포트하는 것입니다:
 ```python
 import streamlit as st
 ```
 
-Next, we'll give the app a title:
+다음으로, 앱에 대한 제목을 설정합니다:
 ```python
 st.title('st.experimental_get_query_params')
 ```
 
-Let's also add an About drop-down box:
+앱에 대한 설명을 포함하는 드롭다운 박스도 추가합니다:
 ```python
-with st.expander('About this app'):
-  st.write("`st.experimental_get_query_params` allows the retrieval of query parameters directly from the URL of the user's browser.")
+with st.expander('이 앱에 대하여'):
+  st.write("`st.experimental_get_query_params`는 사용자 브라우저의 URL에서 직접 쿼리 매개변수를 검색할 수 있게 해줍니다.")
 ```
 
-Then, we'll provide instructions to visitors of the app on how they can pass query parameters directly to the URL:
+그 다음, 앱 방문자들이 URL에 직접 쿼리 매개변수를 전달하는 방법에 대한 지침을 제공합니다:
 ```python
-# 1. Instructions
-st.header('1. Instructions')
+# 1. 지침
+st.header('1. 지침')
 st.markdown('''
-In the above URL bar of your internet browser, append the following:
-`?name=Jack&surname=Beanstalk`
-after the base URL `http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/`
-such that it becomes 
-`http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk`
+인터넷 브라우저의 URL 바에서 다음을 추가하세요:
+`?firstname=Jack&surname=Beanstalk`
+기본 URL `http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/` 뒤에 추가하여
+`http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk`가 되도록 합니다.
 ''')
 ```
 
-Subsequently, we'll display the contents of the `st.experimental_get_query_params` command.
+그 후, `st.experimental_get_query_params` 명령의 내용을 표시합니다.
 ```python
-# 2. Contents of st.experimental_get_query_params
-st.header('2. Contents of st.experimental_get_query_params')
+# 2. st.experimental_get_query_params의 내용
+st.header('2. st.experimental_get_query_params의 내용')
 st.write(st.experimental_get_query_params())
 ```
 
-Finally, we'll select and display selective information from the URL's query parameter:
+마지막으로, URL의 쿼리 매개변수에서 선택적 정보를 추출하여 표시합니다
+
+:
 ```python
-# 3. Retrieving and displaying information from the URL
-st.header('3. Retrieving and displaying information from the URL')
+# 3. URL에서 정보 검색 및 표시
+st.header('3. URL에서 정보 검색 및 표시')
 
 firstname = st.experimental_get_query_params()['firstname'][0]
 surname = st.experimental_get_query_params()['surname'][0]
 
-st.write(f'Hello **{firstname} {surname}**, how are you?')
+st.write(f'안녕하세요 **{firstname} {surname}**, 어떠세요?')
 ```
 
-## Further reading
+## 추가 읽기
 - [`st.experimental_get_query_params`](https://docs.streamlit.io/library/api-reference/utilities/st.experimental_get_query_params)
