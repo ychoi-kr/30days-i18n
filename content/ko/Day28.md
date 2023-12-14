@@ -1,24 +1,24 @@
 # streamlit-shap
 
-[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/). 
+[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap)는 [SHAP](https://github.com/slundberg/shap) 플롯을 [Streamlit](https://streamlit.io/)에서 표시하기 위한 래퍼를 제공하는 Streamlit 컴포넌트입니다.
 
-The library is developed by our in-house staff [Snehan Kekre](https://github.com/snehankekre) who also maintains the [Streamlit Documentation](https://docs.streamlit.io/) website.
+이 라이브러리는 저희 내부 직원인 [스네한 케크레](https://github.com/snehankekre)(Snehan Kekre)가 개발했으며, [Streamlit 문서화](https://docs.streamlit.io/) 웹사이트도 관리합니다.
 
-Firstly, install Streamlit (of course!) then pip install the `streamlit-shap` library:
+먼저, Streamlit을 설치한 후(당연하죠!) `streamlit-shap` 라이브러리를 pip로 설치합니다:
 ```bash
 pip install streamlit
 pip install streamlit-shap
 ```
 
-There are also other prerequisite libraries to install (e.g. `matplotlib`, `pandas`, `scikit-learn` and `xgboost`) if you haven't yet done so.
+또한, 아직 설치하지 않았다면 다른 필수 라이브러리들(예: `matplotlib`, `pandas`, `scikit-learn`, `xgboost`)도 설치해야 합니다.
 
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/streamlit-shap/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/streamlit-shap/)
 
-## Code
-Here's how to use `streamlit-shap`:
+## 코드
+`streamlit-shap`를 사용하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 from streamlit_shap import st_shap
@@ -50,50 +50,50 @@ def load_model(X, y):
     model = xgboost.train(params, d_train, 10, evals = [(d_test, "test")], verbose_eval=100, early_stopping_rounds=20)
     return model
 
-st.title("`streamlit-shap` for displaying SHAP plots in a Streamlit app")
+st.title("`streamlit-shap`로 Streamlit 앱에서 SHAP 플롯 표시하기")
 
-with st.expander('About the app'):
-    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/). 
-                    The library is developed by our in-house staff [Snehan Kekre](https://github.com/snehankekre) who also maintains the [Streamlit Documentation](https://docs.streamlit.io/) website.
+with st.expander('앱에 대하여'):
+    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap)는 [SHAP](https://github.com/slundberg/shap) 플롯을 [Streamlit](https://streamlit.io/)에서 표시하기 위한 래퍼를 제공하는 Streamlit 컴포넌트입니다.
+                    이 라이브러리는 저희 내부 직원인 [스네한 케크레](https://github.com/snehankekre)가 개발했으며, [Streamlit 문서화](https://docs.streamlit.io/) 웹사이트도 관리합니다.
                 ''')
 
-st.header('Input data')
-X,y = load_data()
-X_display,y_display = shap.datasets.adult(display=True)
+st.header('입력 데이터')
+X, y = load_data()
+X_display, y_display = shap.datasets.adult(display=True)
 
-with st.expander('About the data'):
-    st.write('Adult census data is used as the example dataset.')
+with st.expander('데이터에 대하여'):
+    st.write('예시 데이터셋으로 성인 인구 조사 데이터를 사용합니다.')
 with st.expander('X'):
     st.dataframe(X)
 with st.expander('y'):
     st.dataframe(y)
 
-st.header('SHAP output')
+st.header('SHAP 출력')
  
-# train XGBoost model
+# XGBoost 모델 훈련
 model = load_model(X, y)
 
-# compute SHAP values
+# SHAP 값 계산
 explainer = shap.Explainer(model, X)
 shap_values = explainer(X)
 
-with st.expander('Waterfall plot'):
+with st.expander('워터폴 플롯'):
     st_shap(shap.plots.waterfall(shap_values[0]), height=300)
-with st.expander('Beeswarm plot'):
+with st.expander('비스웜 플롯'):
     st_shap(shap.plots.beeswarm(shap_values), height=300)
 
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
 
-with st.expander('Force plot'):
-    st.subheader('First data instance')
+with st.expander('포스 플롯'):
+    st.subheader('첫 번째 데이터 인스턴스')
     st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
-    st.subheader('First thousand data instance')
+    st.subheader('첫 천 번째 데이터 인스턴스')
     st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 해야 할 일은 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 from streamlit_shap import st_shap
@@ -104,19 +104,19 @@ import numpy as np
 import pandas as pd
 ```
 
-Next, we'll set the page layout to be wide such that contents in the Streamlit app can spread the full page width.
+다음으로, Streamlit 앱의 내용이 전체 페이지 너비로 펼쳐질 수 있도록 페이지 레이아웃을 넓게 설정합니다.
 ```python
 st.set_page_config(layout="wide")
 ```
 
-Then, we'll load in a dataset from the `shap` library:
+그 다음으로, `shap` 라이브러리에서 데이터셋을 로드합니다:
 ```python
 @st.experimental_memo
 def load_data():
     return shap.datasets.adult()
 ```
 
-Subsequently, we'll definite a function called `load_model` for taking in the `X, y` matrix pair as input, perform data splitting to train/test sets, constructing a `DMatrix` and build an XGBoost model.
+그 다음으로, `X, y` 행렬 쌍을 입력으로 받아 데이터를 훈련/테스트 세트로 분할하고, `DMatrix`를 구성하며 XGBoost 모델을 빌드하는 `load_model`이라는 함수를 정의합니다.
 ```python
 @st.experimental_memo
 def load_model(X, y):
@@ -135,71 +135,71 @@ def load_model(X, y):
     return model
 ```
 
-The title of the Streamlit app is then displayed:
+그 후 Streamlit 앱의 제목을 표시합니다:
 ```python
-st.title("`streamlit-shap` for displaying SHAP plots in a Streamlit app")
+st.title("`streamlit-shap`로 Streamlit 앱에서 SHAP 플롯 표시하기")
 ```
 
-An about expander box is implemented to provide details of the app:
+앱에 대한 설명을 제공하기 위해 접을 수 있는 정보 박스를 구현합니다:
 ```python
-with st.expander('About the app'):
-    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/). 
-                    The library is developed by our in-house staff [Snehan Kekre](https://github.com/snehankekre) who also maintains the [Streamlit Documentation](https://docs.streamlit.io/) website.
+with st.expander('앱에 대하여'):
+    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap)는 [SHAP](https://github.com/slundberg/shap) 플롯을 [Streamlit](https://streamlit.io/)에서 표시하기 위한 래퍼를 제공하는 Streamlit 컴포넌트입니다.
+                    이 라이브러리는 저희 내부 직원인 [스네한 케크레](https://github.com/snehankekre)가 개발했으며, [Streamlit 문서화](https://docs.streamlit.io/) 웹사이트도 관리합니다.
                 ''')
 ```
 
-Here, we'll display the header text along with expander box of the `X` and `y` variables of the Input data:
+여기서 입력 데이터의 `X`와 `y` 변수에 대한 헤더 텍스트와 정보 박스를 표시합니다:
 ```python
-st.header('Input data')
-X,y = load_data()
-X_display,y_display = shap.datasets.adult(display=True)
+st.header('입력 데이터')
+X, y = load_data()
+X_display, y_display = shap.datasets.adult(display=True)
 
-with st.expander('About the data'):
-    st.write('Adult census data is used as the example dataset.')
+with st.expander('데이터에 대하여'):
+    st.write('예시 데이터셋으로 성인 인구 조사 데이터를 사용합니다.')
 with st.expander('X'):
     st.dataframe(X)
 with st.expander('y'):
     st.dataframe(y)
 ```
 
-Here, we'll display the header text for the forthcoming SHAP output:
+"여기서 우리는 다가오는 SHAP 출력에 대한 헤더 텍스트를 표시할 것입니다:"
 ```python
-st.header('SHAP output')
+st.header('SHAP 출력')
 ```
 
-The XGBoost model is then built by using the `load_model` function that was just implemented above. Finally, 
+그 후 `load_model` 함수를 사용하여 XGBoost 모델을 구축합니다. 마지막으로,
 ```python
-# train XGBoost model
-X,y = load_data()
-X_display,y_display = shap.datasets.adult(display=True)
+# XGBoost 모델 훈련
+X, y = load_data()
+X_display, y_display = shap.datasets.adult(display=True)
 
 model = load_model(X, y)
 ```
 
-Here, we'll compute the SHAP values, which are then used to create the Waterfall and Beeswarm plots.
+여기서 SHAP 값들을 계산합니다. 이 값들은 워터폴과 비스웜 플롯을 만드는 데 사용됩니다.
 ```python
-# compute SHAP values
+# SHAP 값 계산
 explainer = shap.Explainer(model, X)
 shap_values = explainer(X)
 
-with st.expander('Waterfall plot'):
+with st.expander('워터폴 플롯'):
     st_shap(shap.plots.waterfall(shap_values[0]), height=300)
-with st.expander('Beeswarm plot'):
+with st.expander('비스웜 플롯'):
     st_shap(shap.plots.beeswarm(shap_values), height=300)
 ```
 
-Finally, the Tree SHAP algorithms is used to explain the output of ensemble tree models via the `shap.TreeExplainer` command and visualized via the `shap.force_plot` command:
+마지막으로, 앙상블 트리 모델의 출력을 설명하기 위해 `shap.TreeExplainer` 명령을 사용하고 `shap.force_plot` 명령을 통해 시각화합니다:
 ```python
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
 
-with st.expander('Force plot'):
-    st.subheader('First data instance')
+with st.expander('포스 플롯'):
+    st.subheader('첫 번째 데이터 인스턴스')
     st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
-    st.subheader('First thousand data instance')
+    st.subheader('첫 천 번째 데이터 인스턴스')
     st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
 ```
 
-## Further reading
+## 추가 정보
 - [`streamlit-shap`](https://github.com/snehankekre/streamlit-shap)
 - [SHAP](https://github.com/slundberg/shap)
