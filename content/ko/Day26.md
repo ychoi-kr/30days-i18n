@@ -1,23 +1,23 @@
-# How to use API by building the Bored API app
+# Bored API 앱 사용 방법
 
-The Bored API app suggests fun things for you to do when you are bored!
+Bored API 앱은 당신이 지루할 때 할 수 있는 재미있는 활동을 제안합니다!
 
-Technically, it also demonstrates the usage of APIs from within a Streamlit app.
+기술적으로, 이 앱은 Streamlit 앱 내에서 API를 사용하는 방법을 시연합니다.
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/bored-api-app/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/bored-api-app/)
 
-## Code
-Here's how to implement the Bored-API app:
+## 코드
+Bored-API 앱을 구현하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 import requests
 
-st.title('🏀 Bored API app')
+st.title('🏀 Bored API 앱')
 
-st.sidebar.header('Input')
-selected_type = st.sidebar.selectbox('Select an activity type', ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"])
+st.sidebar.header('입력')
+selected_type = st.sidebar.selectbox('활동 유형 선택', ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"])
 
 suggested_activity_url = f'http://www.boredapi.com/api/activity?type={selected_type}'
 json_data = requests.get(suggested_activity_url)
@@ -25,76 +25,78 @@ suggested_activity = json_data.json()
 
 c1, c2 = st.columns(2)
 with c1:
-  with st.expander('About this app'):
-    st.write('Are you bored? The **Bored API app** provides suggestions on activities that you can do when you are bored. This app is powered by the Bored API.')
+  with st.expander('이 앱에 대하여'):
+    st.write('지루하신가요? **Bored API 앱**은 지루할 때 할 수 있는 활동을 제안합니다. 이 앱은 Bored API에 의해 구동됩니다.')
 with c2:
-  with st.expander('JSON data'):
+  with st.expander('JSON 데이터'):
     st.write(suggested_activity)
     
-st.header('Suggested activity')
+st.header('제안된 활동')
 st.info(suggested_activity['activity'])
 
 col1, col2, col3 = st.columns(3)
 with col1:
-  st.metric(label='Number of Participants', value=suggested_activity['participants'], delta='')
+  st.metric(label='참가자 수', value=suggested_activity['participants'], delta='')
 with col2:
-  st.metric(label='Type of Activity', value=suggested_activity['type'].capitalize(), delta='')
+  st.metric(label='활동 유형', value=suggested_activity['type'].capitalize(), delta='')
 with col3:
-  st.metric(label='Price', value=suggested_activity['price'], delta='')
+  st.metric(label='가격', value=suggested_activity['price'], delta='')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` and the `requests` library like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리와 `requests` 라이브러리를 임포트하는 것입니다:
 ```python
 import streamlit as st
 import requests
 ```
 
-The app's title is displayed via `st.title`:
+앱의 제목은 `st.title`을 통해 표시됩니다:
 ```python
-st.title('🏀 Bored API app')
+st.title('🏀 Bored API 앱')
 ```
 
-Next, we'll accept user input on the **activity type** by means of the `st.selectbox` command:
+다음으로, `st.selectbox` 명령을 통해 사용자로부터 **활동 유형**에 대한 입력을 받습니다:
 ```python
-st.sidebar.header('Input')
-selected_type = st.sidebar.selectbox('Select an activity type', ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"])
+st.sidebar.header('입력')
+selected_type = st.sidebar.selectbox('활동 유형 선택', ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"])
 ```
 
-The selected activity mentioned above is then appended to the URL via an f-string, which is then used to retrieve the resulting JSON data: 
+위에서 언급한 선택된 활동은 f-string을 통해 URL에 추가되며, 이를 사용하여 결과 JSON 데이터를 검색합니다: 
 ```python
 suggested_activity_url = f'http://www.boredapi.com/api/activity?type={selected_type}'
 json_data = requests.get(suggested_activity_url)
 suggested_activity = json_data.json()
 ```
 
-Here, we'll display information about the app and the JSON data via the `st.expander` command.
+여기서는 `st.expander` 명령을 통해 앱에 대한 정보와 JSON 데이터를 표시합니다.
 ```python
 c1, c2 = st.columns(2)
 with c1:
-  with st.expander('About this app'):
-    st.write('Are you bored? The **Bored API app** provides suggestions on activities that you can do. This app is powered by the Bored API.')
+  with st.expander('이 앱에 대하여'):
+    st.write('지루하신가요? **Bored API 앱**은 지루할 때 할 수 있는 활동을 제안합니다. 이 앱은 Bored API에 의해 구동됩니다.')
 with c2:
-  with st.expander('JSON data'):
+  with st.expander('JSON 데이터'):
     st.write(suggested_activity)
 ```
 
-We'll then display a suggested activity like so:
+그런 다음 제안된 활동을 다음과 같이 표시합니다:
 ```python
-st.header('Suggested activity')
+st.header('제안된 활동')
 st.info(suggested_activity['activity'])
 ```
 
-Finally, we'll also display the accompanying information of the suggested activity such as the `Number of Participants`, `Type of Activity` and `Price`.
+마지막으로, 제안된 활동의 `참가자 수`, `활동 유형`, `가격`과 같은 정보를 표시합니다.
 ```python
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns
+
+(3)
 with col1:
-  st.metric(label='Number of Participants', value=suggested_activity['participants'], delta='')
+  st.metric(label='참가자 수', value=suggested_activity['participants'], delta='')
 with col2:
-  st.metric(label='Type of Activity', value=suggested_activity['type'].capitalize(), delta='')
+  st.metric(label='활동 유형', value=suggested_activity['type'].capitalize(), delta='')
 with col3:
-  st.metric(label='Price', value=suggested_activity['price'], delta='')
+  st.metric(label='가격', value=suggested_activity['price'], delta='')
 ```
 
-## Further reading
+## 추가 읽기
 - [Bored API](http://www.boredapi.com/)
