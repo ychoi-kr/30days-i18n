@@ -1,51 +1,51 @@
-# The Art of Creating Streamlit Apps
+# 스트림릿 앱 만들기의 예술
 
-Today's Day 30 of the *#30DaysOfStreamlit* challenge. Congratulations on making this far in the challenge.
+오늘은 *#30DaysOfStreamlit* 챌린지의 30일째입니다. 이 챌린지까지 오신 것을 축하드립니다.
 
-In this tutorial, we're going to put our newfound knowledge from this learning challenge to create Streamlit apps to solve real-world problem.
+이 튜토리얼에서는 이러한 학습 챌린지에서 얻은 새로운 지식을 활용하여 실제 문제를 해결하기 위한 스트림릿 앱을 만들어 볼 것입니다.
 
-## Real-world problem
+## 실제 문제
 
-As a content creator, having access to thumbnail images from YouTube videos are useful resources for social promotion and content creation.
+콘텐츠 제작자로서 YouTube 동영상의 썸네일 이미지에 액세스하는 것은 소셜 프로모션 및 콘텐츠 제작을 위한 유용한 자원입니다.
 
-Let's figure out how we're going to tackle this problem and build a Streamlit app.
+이 문제를 해결하고 스트림릿 앱을 만드는 방법을 알아봅시다.
 
-## Solution
+## 해결책
 
-Today, we're going to build `yt-img-app`, which is a Streamlit app that can extract thumbnail images from YouTube videos.
+오늘 우리는 YouTube 동영상에서 썸네일 이미지를 추출할 수 있는 스트림릿 앱인 `yt-img-app`을 만들 것입니다.
 
-In a nutshell, here's the 3 simple steps that we want the Streamlit app to do:
+간단히 말해, 스트림릿 앱이 수행해야 할 3단계는 다음과 같습니다:
 
-1. Accept a YouTube URL as input from users
-2. Perform text processing of the URL to extract the unique YouTube video ID
-3. Use the YouTube video ID as an input to a custom function that retrieves and displays the thumbnail image from YouTube videos
+1. 사용자로부터 YouTube URL을 입력으로 받기
+2. URL의 텍스트 처리를 수행하여 고유한 YouTube 비디오 ID 추출하기
+3. YouTube 비디오의 썸네일 이미지를 검색하고 표시하는 사용자 정의 함수에 YouTube 비디오 ID를 입력으로 사용하기
 
-## Instructions
+## 사용 방법
 
-To get started in using the Streamlit app, copy and paste a YouTube URL into the input text box.
+스트림릿 앱을 사용하기 위해서는 YouTube URL을 입력 텍스트 상자에 복사하여 붙여넣으세요.
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/yt-img-app/)
+[![스트림릿 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/yt-img-app/)
 
-## Code
-Here's how to build the `yt-img-app` Streamlit app:
+## 코드
+`yt-img-app` 스트림릿 앱을 만드는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 
 st.title('🖼️ yt-img-app')
-st.header('YouTube Thumbnail Image Extractor App')
+st.header('YouTube 썸네일 이미지 추출기 앱')
 
-with st.expander('About this app'):
-  st.write('This app retrieves the thumbnail image from a YouTube video.')
+with st.expander('이 앱에 대하여'):
+  st.write('이 앱은 YouTube 동영상의 썸네일 이미지를 검색합니다.')
   
-# Image settings
-st.sidebar.header('Settings')
+# 이미지 설정
+st.sidebar.header('설정')
 img_dict = {'Max': 'maxresdefault', 'High': 'hqdefault', 'Medium': 'mqdefault', 'Standard': 'sddefault'}
-selected_img_quality = st.sidebar.selectbox('Select image quality', ['Max', 'High', 'Medium', 'Standard'])
+selected_img_quality = st.sidebar.selectbox('이미지 품질 선택', ['Max', 'High', 'Medium', 'Standard'])
 img_quality = img_dict[selected_img_quality]
 
-yt_url = st.text_input('Paste YouTube URL', 'https://youtu.be/JwSS70SZdyM')
+yt_url = st.text_input('YouTube URL 붙여넣기', 'https://youtu.be/JwSS70SZdyM')
 
 def get_ytid(input_url):
   if 'youtu.be' in input_url:
@@ -54,48 +54,48 @@ def get_ytid(input_url):
     ytid = input_url.split('=')[-1]
   return ytid
     
-# Display YouTube thumbnail image
+# YouTube 썸네일 이미지 표시
 if yt_url != '':
   ytid = get_ytid(yt_url) # yt or yt_url
 
   yt_img = f'http://img.youtube.com/vi/{ytid}/{img_quality}.jpg'
   st.image(yt_img)
-  st.write('YouTube video thumbnail image URL: ', yt_img)
+  st.write('YouTube 동영상 썸네일 이미지 URL: ', yt_img)
 else:
-  st.write('☝️ Enter URL to continue ...')
+  st.write('☝️ URL을 입력해 계속하세요 ...')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+스트림릿 앱을 만들 때 가장 먼저 할 일은 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
 ```python
 import streamlit as st
 ```
 
-Next, we display the app's title and accompanying header:
+다음으로, 앱의 제목과 헤더를 표시합니다:
 ```python
 st.title('🖼️ yt-img-app')
-st.header('YouTube Thumbnail Image Extractor App')
+st.header('YouTube 썸네일 이미지 추출기 앱')
 ```
-While we're at it, we'll might as well throw in an About expandable box.
+이와 동시에, 우리는 "이 앱에 대하여" 확장 가능한 상자를 추가할 수도 있습니다.
 ```python
-with st.expander('About this app'):
-  st.write('This app retrieves the thumbnail image from a YouTube video.')
+with st.expander('이 앱에 대하여'):
+  st.write('이 앱은 YouTube 동영상의 썸네일 이미지를 검색합니다.')
  
-Here, we create selection box for accepting user input on the image quality to use.
+여기에서, 사용자 입력에 따라 사용할 이미지 품질을 선택하기 위한 선택 상자를 만듭니다.
 ```python
-# Image settings
-st.sidebar.header('Settings')
+# 이미지 설정
+st.sidebar.header('설정')
 img_dict = {'Max': 'maxresdefault', 'High': 'hqdefault', 'Medium': 'mqdefault', 'Standard': 'sddefault'}
-selected_img_quality = st.sidebar.selectbox('Select image quality', ['Max', 'High', 'Medium', 'Standard'])
+selected_img_quality = st.sidebar.selectbox('이미지 품질 선택', ['Max', 'High', 'Medium', 'Standard'])
 img_quality = img_dict[selected_img_quality]
 ```
 
-An input text box is displayed to accept user input on the YouTube video URL to use for extracting the image from.
+이미지를 추출할 YouTube 동영상 URL을 입력할 수 있는 입력 텍스트 상자를 표시합니다.
 ```python
-yt_url = st.text_input('Paste YouTube URL', 'https://youtu.be/JwSS70SZdyM')
+yt_url = st.text_input('YouTube URL 붙여넣기', 'https://youtu.be/JwSS70SZdyM')
 ```
 
-A custom function for performing text processing of the input URL.
+입력 URL의 텍스트 처리를 수행하는 사용자 정의 함수입니다.
 ```python
 def get_ytid(input_url):
   if 'youtu.be' in input_url:
@@ -105,23 +105,23 @@ def get_ytid(input_url):
   return ytid
 ```
 
-Finally, we use flow control to determine whether to display a reminder to enter the URL (i.e. as in the `else` statement) or to display the YouTube thumbnail image (i.e. as in the `if` statement).
+마지막으로, URL을 입력하라는 알림을 표시할지 (즉, `else` 문에서와 같이) 또는 YouTube 썸네일 이미지를 표시할지 (즉, `if` 문에서와 같이) 결정하기 위해 흐름 제어를 사용합니다.
 ```python
-# Display YouTube thumbnail image
+# YouTube 썸네일 이미지 표시
 if yt_url != '':
   ytid = get_ytid(yt_url) # yt or yt_url
 
   yt_img = f'http://img.youtube.com/vi/{ytid}/{img_quality}.jpg'
   st.image(yt_img)
-  st.write('YouTube video thumbnail image URL: ', yt_img)
+  st.write('YouTube 동영상 썸네일 이미지 URL: ', yt_img)
 else:
-  st.write('☝️ Enter URL to continue ...')
+  st.write('☝️ URL을 입력해 계속하세요 ...')
 ```
 
-## Summary
+## 요약
 
-In summary, we have seen that in the creation of any Streamlit app, we normally start by first identifying and defining the problem. Next, we devise a solution to tackle the problem by breaking it down into the granular steps, which we implement in the Streamlit app. 
+요약하자면, 어떤 스트림릿 앱을 만들 때, 우리는 보통 먼저 문제를 식별하고 정의하는 것으로 시작합니다. 다음으로, 우리는 그 문제를 해결하기 위해 그것을 세부적인 단계로 나누고 스트림릿 앱에서 이를 구현합니다.
 
-Here, we also have to determine which data or information that we need as input from users, the approach and method to use in processing the user input in order to produce the final desired output.
+여기에서 우리는 또한 사용자로부터 필요한 데이터나 정보를 결정하고, 최종적으로 원하는 결과물을 생산하기 위해 사용자 입력을 처리하는 접근 방법과 방식을 결정해야 합니다.
 
-Hope you enjoyed this tutorial, Happy Streamlit-ing!
+이 튜토리얼을 즐기셨기를 바랍니다, 스트림릿을 즐기세요!
