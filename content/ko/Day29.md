@@ -1,32 +1,31 @@
-# How to make a zero-shot learning text classifier using Hugging Face and Streamlit
+# 허깅 페이스와 스트림릿을 사용한 제로샷 학습 텍스트 분류기 만들기
 
-In today's challenge, [Charly Wargnier](https://twitter.com/DataChaz) will walk us through the process of developing a zero-shot learning text classifier using Hugging Face and Streamlit.
+오늘의 도전에서, [찰리 와그니에](https://twitter.com/DataChaz)가 허깅 페이스와 스트림릿을 사용하여 제로샷 학습 텍스트 분류기를 개발하는 과정을 소개할 것입니다.
 
-## Introduction
+## 소개
 
-Hey Streamliters!
+안녕하세요, 스트림릿츠!
 
-Today I'm excited to have the opportunity to contribute to the 30DaysofStreamlit challenge via this hands-on tutorial! 🎈
+오늘 저는 30DaysofStreamlit 챌린지에 이 실습 튜토리얼을 통해 기여할 수 있게 되어 매우 기쁩니다! 🎈
 
-## What are we building?
+## 우리는 무엇을 만들까요?
 
-We will create a zero-shot learning text classifier using Hugging Face's API inference and Distilbart!
+우리는 허깅 페이스의 API 추론과 디스틸바트를 사용하여 제로샷 학습 텍스트 분류기를 만들 것입니다!
 
-You will have the mighty power to classify keyphrases on-the-fly, fast, and without pre ML training!
+이를 통해 키워드를 실시간으로, 빠르게, 그리고 사전 ML 트레이닝 없이 분류할 수 있는 강력한 기능을 갖게 될 것입니다!
 
-Create classifying labels, paste your keyphrases, and you're off!
+분류 라벨을 만들고, 키워드를 붙여넣기만 하면 시작됩니다!
 
-You can set these labels anything, e.g.:
+이 라벨들은 다음과 같은 것일 수 있습니다, 예를 들면:
 
-- Positive, Negative and Neutral for sentiment analysis
-- Angry, Happy, Emotional for emotion analysis
-- Navigational, Transactional, Informational for intent classification purposes
-- Your product range  (bags, shoes, boots etc.)
+- 감정 분석을 위한 긍정, 부정, 중립
+- 감정 분석을 위한 화남, 기쁨, 감정적
+- 의도 분류를 위한 네비게이셔널, 트랜잭셔널, 정보적
+- 귀하의 제품 범위 (가방, 신발, 부츠 등)
 
-You decide! 
+당신이 결정합니다!
 
-Excited? Let's dive in! 
+흥분되나요? 시작해 볼까요!
 
-## Read the full blog
-👉 [Read the full blog](https://www.charlywargnier.com/post/how-to-create-a-zero-shot-learning-text-classifier-using-hugging-face-and-streamlit)
-
+## 전체 블로그 읽기
+👉 [전체 블로그 읽기](https://www.charlywargnier.com/post/how-to-create-a-zero-shot-learning-text-classifier-using-hugging-face-and-streamlit)
