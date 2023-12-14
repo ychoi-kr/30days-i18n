@@ -1,164 +1,164 @@
-# Build a draggable and resizable dashboard with Streamlit Elements
+# Streamlit Elements를 사용한 드래그 가능하고 크기 조절 가능한 대시보드 만들기
 
-Streamlit Elements is a third-party component made by [okld](https://github.com/okld) that gives you the tools to compose beautiful applications and dashboards with Material UI widgets, Monaco editor (Visual Studio Code), Nivo charts, and more.
+Streamlit Elements는 [okld](https://github.com/okld)가 만든 서드파티 컴포넌트로, Material UI 위젯, Monaco 편집기 (Visual Studio Code), Nivo 차트 등을 사용하여 아름다운 애플리케이션과 대시보드를 구성할 수 있는 도구를 제공합니다.
 
-## How to use?
+## 사용 방법
 
-### Installation
+### 설치
 
-The first step is to install Streamlit Elements in your environment:
+첫 번째 단계는 환경에 Streamlit Elements를 설치하는 것입니다:
 
 ```bash
 pip install streamlit-elements==0.1.*
 ```
 
-It is recommended to pin the version to `0.1.*`, as future versions might introduce breaking API changes.
+미래 버전에서 API 변경이 있을 수 있으므로 `0.1.*` 버전을 고정하는 것이 좋습니다.
 
-### Usage
+### 사용법
 
-You can refer to [Streamlit Elements README](https://github.com/okld/streamlit-elements#getting-started) for an in-depth usage guide.
+자세한 사용 가이드는 [Streamlit Elements README](https://github.com/okld/streamlit-elements#getting-started)를 참조하세요.
 
-## What are we building?
+## 무엇을 만들까요?
 
-The goal of today's challenge is to create a dashboard composed of three Material UI cards:
+오늘의 도전 과제는 세 개의 Material UI 카드로 구성된 대시보드를 만드는 것입니다:
 
-- A first card with a Monaco code editor to input some data ;
-- A second card to display that data in a Nivo Bump chart ;
-- A third card to show a YouTube video URL defined with a `st.text_input`.
+- Monaco 코드 편집기를 사용하여 데이터를 입력하는 첫 번째 카드;
+- Nivo Bump 차트에 데이터를 표시하는 두 번째 카드;
+- `st.text_input`을 사용하여 YouTube 비디오 URL을 표시하는 세 번째 카드.
 
-You can use data generated from Nivo Bump demo there, in 'data' tab: https://nivo.rocks/bump/.
+Nivo Bump 데모에서 데이터를 생성할 수 있습니다: https://nivo.rocks/bump/의 'data' 탭.
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/okld/streamlit-elements-demo/main)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/okld/streamlit-elements-demo/main)
 
-## Code with line-by-line explanation
+## 코드 및 줄별 설명
 
 ```python
-# First, we will need the following imports for our application.
+# 우리 애플리케이션에 필요한 다음의 임포트를 먼저 해야 합니다.
 
 import json
 import streamlit as st
 from pathlib import Path
 
-# As for Streamlit Elements, we will need all these objects.
-# All available objects and there usage are listed there: https://github.com/okld/streamlit-elements#getting-started
+# Streamlit Elements에서는 다음의 객체들이 필요합니다.
+# 모든 사용 가능한 객체와 그 사용법은 여기에 나와 있습니다: https://github.com/okld/streamlit-elements#getting-started
 
 from streamlit_elements import elements, dashboard, mui, editor, media, lazy, sync, nivo
 
-# Change page layout to make the dashboard take the whole page.
+# 대시보드가 전체 페이지를 차지하도록 페이지 레이아웃을 변경합니다.
 
 st.set_page_config(layout="wide")
 
 with st.sidebar:
     st.title("🗓️ #30DaysOfStreamlit")
     st.header("Day 27 - Streamlit Elements")
-    st.write("Build a draggable and resizable dashboard with Streamlit Elements.")
+    st.write("Streamlit Elements를 사용하여 드래그 가능하고 크기 조절 가능한 대시보드 만들기.")
     st.write("---")
 
-    # Define URL for media player.
-    media_url = st.text_input("Media URL", value="https://www.youtube.com/watch?v=vIQQR_yq-8I")
+    # 미디어 플레이어에 대한 URL 정의.
+    media_url = st.text_input("미디어 URL", value="https://www.youtube.com/watch?v=vIQQR_yq-8I")
 
-# Initialize default data for code editor and chart.
+# 코드 편집기와 차트에 대한 기본 데이터 초기화.
 #
-# For this tutorial, we will need data for a Nivo Bump chart.
-# You can get random data there, in tab 'data': https://nivo.rocks/bump/
+# 이 튜토리얼에서는 Nivo Bump 차트에 필요한 데이터가 필요합니다.
+# 여기서 랜덤 데이터를 얻을 수 있습니다: https://nivo.rocks/bump/의 'data' 탭.
 #
-# As you will see below, this session state item will be updated when our
-# code editor change, and it will be read by Nivo Bump chart to draw the data.
+# 아래에서 보시다시피, 이 세션 상태 항목은 코드 편집기가 변경될 때 업데이트되며,
+# Nivo Bump 차트가 데이터를 그리기 위해 읽을 것입니다.
 
 if "data" not in st.session_state:
     st.session_state.data = Path("data.json").read_text()
 
-# Define a default dashboard layout.
-# Dashboard grid has 12 columns by default.
+# 기본 대시보드 레이아웃을 정의합니다.
+# 대시보드 그리드는 기본적으로 12개의 열을 가지고 있습니다.
 #
-# For more information on available parameters:
+# 사용 가능한 매개변수에 대한 자세한 정보:
 # https://github.com/react-grid-layout/react-grid-layout#grid-item-props
 
 layout = [
-    # Editor item is positioned in coordinates x=0 and y=0, and takes 6/12 columns and has a height of 3.
+    # 편집기 항목은 x=0, y=0 좌표에 위치하며, 12/6열을 차지하고 높이는 3입니다.
     dashboard.Item("editor", 0, 0, 6, 3),
-    # Chart item is positioned in coordinates x=6 and y=0, and takes 6/12 columns and has a height of 3.
+    # 차트 항목은 x=6, y=0 좌표에 위치하며, 12/6열을 차지하고 높이는 3입니다.
     dashboard.Item("chart", 6, 0, 6, 3),
-    # Media item is positioned in coordinates x=0 and y=3, and takes 6/12 columns and has a height of 4.
+    # 미디어 항목은 x=0, y=3 좌표에 위치하며, 12/6열을 차지하고 높이는 4입니다.
     dashboard.Item("media", 0, 2, 12, 4),
 ]
 
-# Create a frame to display elements.
+# 요소를 표시할 프레임을 만듭니다.
 
 with elements("demo"):
 
-    # Create a new dashboard with the layout specified above.
+    # 위에서 지정한 레이아웃으로 새 대시보드를 만듭니다.
     #
-    # draggableHandle is a CSS query selector to define the draggable part of each dashboard item.
-    # Here, elements with a 'draggable' class name will be draggable.
+    # draggableHandle은 대시보드 항목의 드래그 가능한 부분을 정의하는 CSS 쿼리 선택자입니다.
+    # 여기서는 'draggable' 클래스 이름을 가진 요소가 드래그 가능합니다.
     #
-    # For more information on available parameters for dashboard grid:
+    # 대시보드 그리드에 사용 가능한 매개변수에 대한 자세한 정보:
     # https://github.com/react-grid-layout/react-grid-layout#grid-layout-props
     # https://github.com/react-grid-layout/react-grid-layout#responsive-grid-layout-props
 
     with dashboard.Grid(layout, draggableHandle=".draggable"):
 
-        # First card, the code editor.
+        # 첫 번째 카드, 코드 편집기.
         #
-        # We use the 'key' parameter to identify the correct dashboard item.
+        # 'key' 매개변수를 사용하여 올바른 대시보드 항목을 식별합니다.
         #
-        # To make card's content automatically fill the height available, we will use CSS flexbox.
-        # sx is a parameter available with every Material UI widget to define CSS attributes.
+        # 카드 콘텐츠가 자동으로 사용 가능한 높이를 채우도록 하려면 CSS flexbox를 사용합니다.
+        # sx는 모든 Material UI 위젯에서 CSS 속성을 정의하는 데 사용할 수 있는 매개변수입니다.
         #
-        # For more information regarding Card, flexbox and sx:
+        # 카드, flexbox 및 sx에 대한 자세한 정보:
         # https://mui.com/components/cards/
         # https://mui.com/system/flexbox/
         # https://mui.com/system/the-sx-prop/
 
         with mui.Card(key="editor", sx={"display": "flex", "flexDirection": "column"}):
 
-            # To make this header draggable, we just need to set its classname to 'draggable',
-            # as defined above in dashboard.Grid's draggableHandle.
+            # 이 헤더를 드래그 가능하게 만들려면 위의 dashboard.Grid의 draggableHandle에 정의된 대로
+            # 클래스 이름을 'draggable'로 설정하기만 하면 됩니다.
 
             mui.CardHeader(title="Editor", className="draggable")
 
-            # We want to make card's content take all the height available by setting flex CSS value to 1.
-            # We also want card's content to shrink when the card is shrinked by setting minHeight to 0.
+            # 여기서는 카드 콘텐츠가 사용자가 카드를 줄일 때 줄어들고 사용 가능한 모든 높이를 차지하도록 하기 위해
+            # flex를 1로, minHeight를 0으로 설정합니다.
 
             with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
 
-                # Here is our Monaco code editor.
+                # 여기에 우리의 Monaco 코드 편집기가 있습니다.
                 #
-                # First, we set the default value to st.session_state.data that we initialized above.
-                # Second, we define the language to use, JSON here.
+                # 먼저, st.session_state.data에 초기화한 기본값을 설정합니다.
+                # 두 번째로, 사용할 언어를 JSON으로 정의합니다.
                 #
-                # Then, we want to retrieve changes made to editor's content.
-                # By checking Monaco documentation, there is an onChange property that takes a function.
-                # This function is called everytime a change is made, and the updated content value is passed in
-                # the first parameter (cf. onChange: https://github.com/suren-atoyan/monaco-react#props)
+                # 그런 다음, 편집기 콘텐츠에 대한 변경 사항을 검색하려고 합니다.
+                # Monaco 문서를 확인하면 onChange 속성이 함수를 사용한다는 것을 알 수 있습니다.
+                # 이 함수는 변경이 이루어질 때마다 호출되며, 업데이트된 콘텐츠 값이 첫 번째 매개변수로 전달됩니다.
+                # (cf. onChange: https://github.com/suren-atoyan/monaco-react#props)
                 #
-                # Streamlit Elements provide a special sync() function. This function creates a callback that will
-                # automatically forward its parameters to Streamlit's session state items.
+                # Streamlit Elements는 Streamlit의 세션 상태 항목으로 매개변수를 자동으로 전달하는 콜백을 만드는
+                # 특별한 sync() 함수를 제공합니다.
                 #
-                # Examples
+                # 예시
                 # --------
-                # Create a callback that forwards its first parameter to a session state item called "data":
+                # 첫 번째 매개변수를 "data"라는 세션 상태 항목으로 전달하는 콜백을 생성합니다:
                 # >>> editor.Monaco(onChange=sync("data"))
                 # >>> print(st.session_state.data)
                 #
-                # Create a callback that forwards its second parameter to a session state item called "ev":
+                # 두 번째 매개변수를 "ev"라는 세션 상태 항목으로 전달하는 콜백을 생성합니다:
                 # >>> editor.Monaco(onChange=sync(None, "ev"))
                 # >>> print(st.session_state.ev)
                 #
-                # Create a callback that forwards both of its parameters to session state:
+                # 두 매개변수 모두 세션 상태로 전달하는 콜백을 생성합니다:
                 # >>> editor.Monaco(onChange=sync("data", "ev"))
                 # >>> print(st.session_state.data)
                 # >>> print(st.session_state.ev)
                 #
-                # Now, there is an issue: onChange is called everytime a change is made, which means everytime
-                # you type a single character, your entire Streamlit app will rerun.
+                # 문제가 있습니다: onChange는 변경이 발생할 때마다 호출되므로, 단일 문자를 입력할 때마다
+                # 전체 Streamlit 앱이 다시 실행됩니다.
                 #
-                # To avoid this issue, you can tell Streamlit Elements to wait for another event to occur
-                # (like a button click) to send the updated data, by wrapping your callback with lazy().
+                # 이 문제를 피하기 위해 다른 이벤트(예: 버튼 클릭)가 발생할 때까지 업데이트된 데이터를 보내도록
+                # Streamlit Elements에게 지시할 수 있습니다. 이는 lazy()로 콜백을 감싸는 것으로 할 수 있습니다.
                 #
-                # For more information on available parameters for Monaco:
+                # Monaco에 사용 가능한 매개변수에 대한 자세한 정보:
                 # https://github.com/suren-atoyan/monaco-react
                 # https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html
 
@@ -170,43 +170,43 @@ with elements("demo"):
 
             with mui.CardActions:
 
-                # Monaco editor has a lazy callback bound to onChange, which means that even if you change
-                # Monaco's content, Streamlit won't be notified directly, thus won't reload everytime.
-                # So we need another non-lazy event to trigger an update.
+                # Monaco 편집기에는 lazy 콜백이 onChange에 바인딩되어 있으므로, Monaco의 내용을 변경해도
+                # Streamlit은 직접 알림을 받지 못하고, 따라서 단일 문자를 입력할 때마다 다시 로드되지 않습니다.
+                # 그래서 다른 비-lazy 이벤트가 업데이트를 트리거할 필요가 있습니다.
                 #
-                # The solution is to create a button that fires a callback on click.
-                # Our callback doesn't need to do anything in particular. You can either create an empty
-                # Python function, or use sync() with no argument.
+                # 해결책은 클릭 시 콜백을 발생시키는 버튼을 생성하는 것입니다.
+                # 콜백은 특별히 할 일이 없어도 됩니다. 빈 파이썬 함수를 생성하거나, 아무런 인수 없이 sync()를
+                # 사용할 수 있습니다.
                 #
-                # Now, everytime you will click that button, onClick callback will be fired, but every other
-                # lazy callbacks that changed in the meantime will also be called.
+                # 이제, 이 버튼을 클릭할 때마다 onClick 콜백이 발생하지만, 그 사이에 변경된 다른 모든 lazy
+                # 콜백도 호출됩니다.
 
-                mui.Button("Apply changes", onClick=sync())
+                mui.Button("변경 사항 적용", onClick=sync())
 
-        # Second card, the Nivo Bump chart.
-        # We will use the same flexbox configuration as the first card to auto adjust the content height.
+        # 두 번째 카드, Nivo Bump 차트.
+        # 첫 번째 카드와 동일한 flexbox 구성을 사용하여 콘텐츠 높이를 자동으로 조정합니다.
 
         with mui.Card(key="chart", sx={"display": "flex", "flexDirection": "column"}):
 
-            # To make this header draggable, we just need to set its classname to 'draggable',
-            # as defined above in dashboard.Grid's draggableHandle.
+            # 이 헤더를 드래그 가능하게 만들려면, 위의 dashboard.Grid의 draggableHandle에 정의된 대로
+            # 클래스 이름을 'draggable'로 설정하기만 하면 됩니다.
 
-            mui.CardHeader(title="Chart", className="draggable")
+            mui.CardHeader(title="차트", className="draggable")
 
-            # Like above, we want to make our content grow and shrink as the user resizes the card,
-            # by setting flex to 1 and minHeight to 0.
+            # 위와 같이, 사용자가 카드 크기를 조절할 때 콘텐츠가 자동으로 늘어나고 줄어들도록 하기 위해
+            # flex를 1로, minHeight를 0으로 설정합니다.
 
             with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
 
-                # This is where we will draw our Bump chart.
+                # 여기서 Bump 차트를 그립니다.
                 #
-                # For this exercise, we can just adapt Nivo's example and make it work with Streamlit Elements.
-                # Nivo's example is available in the 'code' tab there: https://nivo.rocks/bump/
+                # 이번 연습에서는 Nivo의 예제를 가져와 Streamlit Elements에서 작동하도록 조정할 수 있습니다.
+                # Nivo의 예제는 여기 'code' 탭에서 찾을 수 있습니다: https://nivo.rocks/bump/
                 #
-                # Data takes a dictionary as parameter, so we need to convert our JSON data from a string to
-                # a Python dictionary first, with `json.loads()`.
+                # 데이터는 사전 형식의 매개변수를 취하므로, JSON 데이터를 문자열에서
+                # Python 사전으로 변환해야 합니다, `json.loads()`를 사용하여.
                 #
-                # For more information regarding other available Nivo charts:
+                # 다른 Nivo 차트에 대한 자세한 정보는 여기서 확인할 수 있습니다:
                 # https://nivo.rocks/
 
                 nivo.Bump(
@@ -251,19 +251,20 @@ with elements("demo"):
                     axisRight=None,
                 )
 
-        # Third element of the dashboard, the Media player.
+        # 대시보드의 세 번째 요소, 미디어 플레이어.
 
         with mui.Card(key="media", sx={"display": "flex", "flexDirection": "column"}):
-            mui.CardHeader(title="Media Player", className="draggable")
+            mui.CardHeader(title="미디어 플레이어", className="draggable")
             with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
 
-                # This element is powered by ReactPlayer, it supports many more players other
-                # than YouTube. You can check it out there: https://github.com/cookpete/react-player#props
+                # 이 요소는 ReactPlayer에 의해 구동되며, YouTube 외에도 많은 플레이어를 지원합니다.
+                # 여기에서 확인할 수 있습니다: https://github.com/cookpete/react-player#props
 
                 media.Player(url=media_url, width="100%", height="100%", controls=True)
 
 ```
 
-## Any question?
+## 궁금한 점이 있으신가요?
 
-Feel free to ask any question regarding Streamlit Elements or this challenge there: [Streamlit Elements Topic](https://discuss.streamlit.io/t/streamlit-elements-build-draggable-and-resizable-dashboards-with-material-ui-nivo-charts-and-more/24616)
+Streamlit Elements나 이 도전 과제에 대해 궁금한 점이 있으시면 여기서 질문하세요: [Streamlit Elements 토픽](https://discuss.streamlit.io/t/streamlit-elements-build-draggable-and-resizable-dashboards-with-material-ui-nivo-charts-and-more/24616)
+
