@@ -1,21 +1,21 @@
 # st.progress
 
-`st.progress` displays a progress bar that updates graphically as the iteration progresses.
+`st.progress`는 반복이 진행됨에 따라 그래픽으로 업데이트되는 진행률 표시줄을 보여줍니다.
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.progress/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.progress/)
 
-## Code
-Here's how to use `st.progress`:
+## 코드
+`st.progress`를 사용하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 import time
 
 st.title('st.progress')
 
-with st.expander('About this app'):
-     st.write('You can now display the progress of your calculations in a Streamlit app with the `st.progress` command.')
+with st.expander('이 앱에 대하여'):
+     st.write('`st.progress` 명령어를 사용하여 Streamlit 앱에서 계산의 진행 상태를 표시할 수 있습니다.')
 
 my_bar = st.progress(0)
 
@@ -26,25 +26,25 @@ for percent_complete in range(100):
 st.balloons()
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` along with the `time` library like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 할 일은 `streamlit` 라이브러리를 `st`로 임포트하고 `time` 라이브러리도 임포트하는 것입니다:
 ```python
 import streamlit as st
 import time
 ```
 
-Next, we create a title text for the app:
+다음으로, 앱에 대한 제목 텍스트를 생성합니다:
 ```python
 st.title('st.progress')
 ```
 
-An **About box** is created using `st.expander` and description is displayed via `st.write`:
+`st.expander`를 사용하여 **앱 정보 상자**를 만들고 `st.write`를 통해 설명을 표시합니다:
 ```python
-with st.expander('About this app'):
-     st.write('You can now display the progress of your calculations in a Streamlit app with the `st.progress` command.')
+with st.expander('이 앱에 대하여'):
+     st.write('`st.progress` 명령어를 사용하여 Streamlit 앱에서 계산의 진행 상태를 표시할 수 있습니다.')
 ```
 
-Finally, we define a progress bar and instantiate it with a starting value of `0`. Then, a `for` loop will iterate from `0` until `100` is reached. In each iteration, we use `time.sleep(0.05)` to allow the app to wait for `0.05` before adding a value of `1` to the `my_bar` progress bar and in doing so the graphical display of the bar increases with each iteration.
+마지막으로, 진행률 표시줄을 정의하고 `0`으로 시작값을 설정합니다. 그런 다음 `for` 루프가 `0`부터 `100`까지 반복합니다. 각 반복마다 `time.sleep(0.05)`를 사용하여 앱이 `0.05초` 동안 대기한 후에 `my_bar` 진행률 표시줄에 `1`을 추가합니다. 이렇게 하면 각 반복마다 표시줄의 그래픽 표시가 증가합니다.
 ```python
 my_bar = st.progress(0)
 
@@ -55,5 +55,5 @@ for percent_complete in range(100):
 st.balloons()
 ```
 
-## Further reading
+## 추가 읽기
 - [`st.progress`](https://docs.streamlit.io/library/api-reference/status/st.progress)
