@@ -1,19 +1,19 @@
 # st.session_state
 
-We define access to a Streamlit app in a browser tab as a session. For each browser tab that connects to the Streamlit server, a new session is created. Streamlit reruns your script from top to bottom every time you interact with your app. Each reruns takes place in a blank slate: no variables are shared between runs.
+브라우저 탭에서의 Streamlit 앱 접속을 세션으로 정의합니다. Streamlit 서버에 연결하는 각 브라우저 탭마다 새로운 세션이 생성됩니다. 앱과 상호작용할 때마다 Streamlit은 스크립트를 처음부터 다시 실행합니다. 각 재실행은 백지 상태에서 이루어집니다: 재실행 간에 변수들이 공유되지 않습니다.
 
-Session State is a way to share variables between reruns, for each user session. In addition to the ability to store and persist state, Streamlit also exposes the ability to manipulate state using Callbacks.
+세션 상태는 각 사용자 세션 간에 변수를 공유하는 방법입니다. 상태를 저장하고 유지하는 능력 외에도, Streamlit은 콜백을 사용하여 상태를 조작할 수 있는 기능을 제공합니다.
 
-In this tutorial, we will illustrate the usage of Session State and Callbacks as we build a weight conversion app.
+이 튜토리얼에서는 체중 변환 앱을 만들면서 세션 상태와 콜백의 사용법을 설명하겠습니다.
 
-`st.session_state` allows the implementation of session state in a Streamlit app.
+`st.session_state`는 Streamlit 앱에서 세션 상태를 구현할 수 있게 해줍니다.
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.session_state/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.session_state/)
 
-## Code
-Here's how to use `st.session_state`:
+## 코드
+`st.session_state`를 사용하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 
@@ -24,29 +24,29 @@ def lbs_to_kg():
 def kg_to_lbs():
   st.session_state.lbs = st.session_state.kg*2.2046
 
-st.header('Input')
+st.header('입력')
 col1, spacer, col2 = st.columns([2,1,2])
 with col1:
-  pounds = st.number_input("Pounds:", key = "lbs", on_change = lbs_to_kg)
+  pounds = st.number_input("파운드:", key = "lbs", on_change = lbs_to_kg)
 with col2:
-  kilogram = st.number_input("Kilograms:", key = "kg", on_change = kg_to_lbs)
+  kilogram = st.number_input("킬로그램:", key = "kg", on_change = kg_to_lbs)
 
-st.header('Output')
-st.write("st.session_state object:", st.session_state)
+st.header('출력')
+st.write("st.session_state 객체:", st.session_state)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 임포트하는 것입니다:
 ```python
 import streamlit as st
 ```
 
-Firstly, we'll start by creating the title of the app:
+먼저, 앱의 제목을 만듭니다:
 ```python
 st.title('st.session_state')
 ```
 
-Next, we define custom functions for the weight conversion from lbs to kg and vice versa:
+그 다음, 파운드에서 킬로그램으로, 그 반대로 체중을 변환하는 사용자 정의 함수를 정의합니다:
 ```python
 def lbs_to_kg():
   st.session_state.kg = st.session_state.lbs/2.2046
@@ -54,25 +54,25 @@ def kg_to_lbs():
   st.session_state.lbs = st.session_state.kg*2.2046
 ```
 
-Here, we use `st.number_input` to accept numerical inputs of the weight values:
+여기서는 `st.number_input`을 사용하여 체중 값을 숫자로 입력받습니다:
 ```python
-st.header('Input')
+st.header('입력')
 col1, spacer, col2 = st.columns([2,1,2])
 with col1:
-  pounds = st.number_input("Pounds:", key = "lbs", on_change = lbs_to_kg)
+  pounds = st.number_input("파운드:", key = "lbs", on_change = lbs_to_kg)
 with col2:
-  kilogram = st.number_input("Kilograms:", key = "kg", on_change = kg_to_lbs)
+  kilogram = st.number_input("킬로그램:", key = "kg", on_change = kg_to_lbs)
 ```
-The above 2 custom functions will be called upon as soon as a numerical value is entered into the number box created using the `st.number_input` command. Notice how the `on_change` option specifies the 2 custom functions `lbs_to_kg` and `kg_to_lbs`). 
+위의 두 사용자 정의 함수는 `st.number_input` 명령으로 생성된 숫자 상자에 숫자가 입력되자마자 호출됩니다. `on_change` 옵션에는 `lbs_to_kg` 및 `kg_to_lbs` 두 사용자 정의 함수가 지정됩니다.
 
-In a nutshell, upon entering a number into the `st.number_input` box the number is converted by these custom functions.
+간단히 말해서, `st.number_input` 상자에 숫자를 입력하면 이 사용자 정의 함수들에 의해 숫자가 변환됩니다.
 
-Finally, the weight values in `kg` and `lbs` units as stored in the session state as `st.session_state.kg` and `st.session_state.lbs` will be printed out via `st.write`:
+마지막으로, 세션 상태에 저장된 `kg` 및 `lbs` 단위의 체중 값이 `st.session_state.kg` 및 `st.session_state.lbs`로 `st.write`를 통해 출력됩니다:
 ```python
-st.header('Output')
-st.write("st.session_state object:", st.session_state)
+st.header('출력')
+st.write("st.session_state 객체:", st.session_state)
 ```
 
-## Further reading
-- [Session State](https://docs.streamlit.io/library/api-reference/session-state)
-- [Add statefulness to apps](https://docs.streamlit.io/library/advanced-features/session-state)
+## 추가 읽기
+- [세션 상태](https://docs.streamlit.io/library/api-reference/session-state)
+- [앱에 상태 추가](https://docs.streamlit.io/library/advanced-features/session-state)
