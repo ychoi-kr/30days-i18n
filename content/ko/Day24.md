@@ -1,32 +1,32 @@
 # st.cache
 
-`st.cache` allows you to optimize the performance of your Streamlit app.
+`st.cache`는 Streamlit 앱의 성능을 최적화하는 데 도움을 줍니다.
 
-Streamlit provides a caching mechanism that allows your app to stay performant even when loading data from the web, manipulating large datasets, or performing expensive computations. This is done with the `@st.cache` decorator.
+Streamlit은 웹에서 데이터를 로드하거나, 큰 데이터셋을 조작하거나, 비용이 많이 드는 계산을 수행할 때 앱의 성능을 유지할 수 있게 하는 캐싱 메커니즘을 제공합니다. 이는 `@st.cache` 데코레이터를 사용하여 수행됩니다.
 
-When you mark a function with the @st.cache decorator, it tells Streamlit that whenever the function is called it needs to check a few things:
+함수에 @st.cache 데코레이터를 표시하면 Streamlit에 다음과 같은 몇 가지 사항을 확인하도록 지시합니다:
 
-1. The input parameters that you called the function with
-2. The value of any external variable used in the function
-3. The body of the function
-4. The body of any function used inside the cached function
+1. 함수를 호출할 때 사용한 입력 매개변수
+2. 함수에서 사용된 모든 외부 변수의 값
+3. 함수의 본문
+4. 캐시된 함수 내에서 사용된 모든 함수의 본문
 
-If this is the first time Streamlit has seen these four components with these exact values and in this exact combination and order, it runs the function and stores the result in a local cache. Then, next time the cached function is called, if none of these components changed, Streamlit will just skip executing the function altogether and, instead, return the output previously stored in the cache.
+이 네 가지 구성 요소가 이러한 정확한 값과 순서로 Streamlit에 처음 나타난 경우, Streamlit은 함수를 실행하고 결과를 로컬 캐시에 저장합니다. 그 후에 캐시된 함수가 호출될 때 이러한 구성 요소 중 어느 것도 변경되지 않으면 Streamlit은 함수를 실행하지 않고 대신 캐시에 저장된 이전 출력을 반환합니다.
 
-The way Streamlit keeps track of changes in these components is through hashing. Think of the cache as an in-memory key-value store, where the key is a hash of all of the above and the value is the actual output object passed by reference.
+Streamlit이 이러한 구성 요소의 변경 사항을 추적하는 방법은 해싱을 통한 것입니다. 캐시를 메모리 내 키-값 저장소로 생각해보세요. 여기서 키는 위의 모든 것의 해시이고, 값은 참조에 의해 전달된 실제 출력 객체입니다.
 
-Finally, `@st.cache` supports arguments to configure the cache's behavior. You can find more information on those in our API reference.
+마지막으로, `@st.cache`는 캐시의 동작을 구성하는 데 사용할 수 있는 인수를 지원합니다. 이에 대한 자세한 정보는 API 참조에서 찾을 수 있습니다.
 
-## How to use?
+## 사용 방법?
 
-You can simply add `st.cache` decorator on the preceding line of a custom function that you define in your Streamlit app. See the example below.
+Streamlit 앱에서 정의하는 사용자 정의 함수의 앞줄에 `st.cache` 데코레이터를 추가하기만 하면 됩니다. 아래 예제를 참고하세요.
 
-## Demo app
+## 데모 앱
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.cache/)
+[![Streamlit 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.cache/)
 
-## Code
-Here's how to use `st.cache`:
+## 코드
+`st.cache`를 사용하는 방법은 다음과 같습니다:
 ```python
 import streamlit as st
 import numpy as np
@@ -35,9 +35,9 @@ from time import time
 
 st.title('st.cache')
 
-# Using cache
+# 캐시 사용
 a0 = time()
-st.subheader('Using st.cache')
+st.subheader('st.cache 사용')
 
 @st.cache(suppress_st_warning=True)
 def load_data_a():
@@ -52,9 +52,9 @@ a1 = time()
 st.info(a1-a0)
 
 
-# Not using cache
+# 캐시 미사용
 b0 = time()
-st.subheader('Not using st.cache')
+st.subheader('st.cache 미사용')
 
 def load_data_b():
   df = pd.DataFrame(
@@ -68,8 +68,8 @@ b1 = time()
 st.info(b1-b0)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` as well as other libraries used in the app like so:
+## 줄별 설명
+Streamlit 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로, 그리고 앱에서 사용되는 다른 라이브러리를 임포트하는 것입니다:
 ```python
 import streamlit as st
 import numpy as np
@@ -77,57 +77,59 @@ import pandas as pd
 from time import time
 ```
 
-This is followed by creating a title text for the app:
+이어서 앱에 대한 제목 텍스트를 생성합니다:
 ```python
-st.title('Streamlit Cache')
+st.title('st.cache')
 ```
 
-Next, we'll define 2 custom functions for generating a large DataFrame where the first one makes use of the `st.cache` decorator while the second does not:
+다음으로, 큰 DataFrame을 생성하는 두 개의 사용자 정의 함수를 정의합니다. 첫 번째 함수는 `st.cache` 데코레이터를 사용하고
+
+, 두 번째 함수는 사용하지 않습니다:
 ```python
 @st.cache(suppress_st_warning=True)
 def load_data_a():
   df = pd.DataFrame(
-    np.random.rand(1000000, 5),
+    np.random.rand(2000000, 5),
     columns=['a', 'b', 'c', 'd', 'e']
   )
   return df
 
 def load_data_b():
   df = pd.DataFrame(
-    np.random.rand(1000000, 5),
+    np.random.rand(2000000, 5),
     columns=['a', 'b', 'c', 'd', 'e']
   )
   return df
 ```
 
-Finally, we run the custom function while also timing the run time using the `time()` command.
+마지막으로, `time()` 명령을 사용하여 실행 시간을 측정하면서 사용자 정의 함수를 실행합니다.
 ```python
-# Using cache
+# 캐시 사용
 a0 = time()
-st.subheader('Using st.cache')
+st.subheader('st.cache 사용')
 
-# We insert the load_data_a function here
+# 여기에 load_data_a 함수 삽입
 
 st.write(load_data_a())
 a1 = time()
 st.info(a1-a0)
 
-# Not using cache
+# 캐시 미사용
 b0 = time()
-st.subheader('Not using st.cache')
+st.subheader('st.cache 미사용')
 
-# We insert the load_data_b function here
+# 여기에 load_data_b 함수 삽입
 
 st.write(load_data_b())
 b1 = time()
 st.info(b1-b0)
 ```
 
-Notice how the first run may provide roughly similar run time. Reload the app and notice how the run time changes when using the `st.cache` decorator. Did you observe any speed increase?
+첫 실행 시 두 함수의 실행 시간이 비슷할 수 있습니다. 앱을 다시 로드하고 `st.cache` 데코레이터를 사용할 때 실행 시간이 어떻게 변하는지 주목해보세요. 속도가 빨라진 것을 관찰할 수 있나요?
 
-## Further reading
-- [`st.cache` API Documentation](https://docs.streamlit.io/library/api-reference/performance/st.cache)
-- [Optimize performance with `st.cache`](https://docs.streamlit.io/library/advanced-features/caching)
-- [Experimental cache primitives](https://docs.streamlit.io/library/advanced-features/experimental-cache-primitives)
+## 추가 읽기
+- [`st.cache` API 문서](https://docs.streamlit.io/library/api-reference/performance/st.cache)
+- [`st.cache`를 사용한 성능 최적화](https://docs.streamlit.io/library/advanced-features/caching)
+- [실험적 캐시 프리미티브](https://docs.streamlit.io/library/advanced-features/experimental-cache-primitives)
 - [`st.experimental_memo`](https://docs.streamlit.io/library/api-reference/performance/st.experimental_memo)
 - [`st.experimental_singleton`](https://docs.streamlit.io/library/api-reference/performance/st.experimental_singleton)
