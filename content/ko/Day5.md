@@ -1,8 +1,8 @@
-# `st.write`란?
+# st.write
 
 `st.write`는 스트림릿 앱에 텍스트와 인수를 작성하는 데 사용됩니다.
 
-텍스트를 표시할 수 있을 뿐만 아니라, `st.write()` 명령을 통해 다음도 표시할 수 있습니다:
+텍스트를 표시할 수 있을 뿐만 아니라, `st.write()` 명령을 통해 다음도 표시할 수 있습니다.
 
 
 - 문자열 출력; `st.markdown()`처럼 작동
@@ -17,13 +17,13 @@
 
 ## 데모 앱
 
-배포된 스트림릿 앱은 아래 링크에 있는 것과 비슷하게 보일 것입니다:
+배포된 스트림릿 앱은 아래 링크에 있는 것과 비슷하게 보일 것입니다.
 
 [![스트림릿 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.write/)
 
 ## 코드
 
-`st.write` 사용 방법은 다음과 같습니다:
+`st.write` 사용 방법은 다음과 같습니다.
 
 ```python
 import numpy as np
@@ -51,7 +51,7 @@ st.write(df)
 
 # 예제 4
 
-st.write('아래는 DataFrame입니다:', df, '위는 dataframe입니다.')
+st.write('아래는 DataFrame입니다.', df, '위는 dataframe입니다.')
 
 # 예제 5
 
@@ -65,34 +65,34 @@ st.write(c)
 
 ## 한 줄씩 설명
 
-스트림릿 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다:
+스트림릿 앱을 만들 때 가장 먼저 할 일은 다음과 같이 `streamlit` 라이브러리를 `st`로 가져오는 것입니다.
 
 ```python
 import streamlit as st
 ```
 
-이어서 앱에 대한 헤더 텍스트를 생성합니다:
+이어서 앱에 대한 헤더 텍스트를 생성합니다.
 
 ```python
 st.header('st.write')
 ```
 
 **예제 1**
-기본적인 사용법은 텍스트와 마크다운 형식의 텍스트를 표시하는 것입니다:
+기본적인 사용법은 텍스트와 마크다운 형식의 텍스트를 표시하는 것입니다.
 
 ```python
 st.write('안녕하세요, *세계여!* :sunglasses:')
 ```
 
 **예제 2**
-앞서 언급했듯이, 숫자와 같은 다른 데이터 형식도 표시할 수 있습니다:
+앞서 언급했듯이, 숫자와 같은 다른 데이터 형식도 표시할 수 있습니다.
 
 ```python
 st.write(1234)
 ```
 
 **예제 3**
-DataFrame도 다음과 같이 표시할 수 있습니다:
+DataFrame도 다음과 같이 표시할 수 있습니다.
 
 ```python
 df = pd.DataFrame({
@@ -103,14 +103,14 @@ st.write(df)
 ```
 
 **예제 4**
-여러 인수를 전달할 수 있습니다:
+여러 인수를 전달할 수 있습니다.
 
 ```python
-st.write('아래는 DataFrame입니다:', df, '위는 dataframe입니다.')
+st.write('아래는 DataFrame입니다.', df, '위는 dataframe입니다.')
 ```
 
 **예제 5**
-마지막으로, 변수로 전달함으로써 그래프도 표시할 수 있습니다:
+마지막으로, 변수로 전달함으로써 그래프도 표시할 수 있습니다.
 
 ```python
 df2 = pd.DataFrame(
@@ -123,7 +123,7 @@ st.write(c)
 
 ## 데모 앱
 
-배포된 스트림릿 앱은 아래 링크에 있는 것과 비슷하게 보일 것입니다:
+배포된 스트림릿 앱은 아래 링크에 있는 것과 비슷하게 보일 것입니다.
 
 [![스트림릿 앱](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.write/)
 
@@ -139,7 +139,7 @@ st.write(c)
 
 ## 추가 읽기
 
-[`st.write`](https://docs.streamlit.io/library/api-reference/write-magic/st.write) 외에도, 다른 방법으로 텍스트를 표시하는 방법을 탐색할 수 있습니다:
+[`st.write`](https://docs.streamlit.io/library/api-reference/write-magic/st.write) 외에도, 다른 방법으로 텍스트를 표시하는 방법을 탐색할 수 있습니다.
 
 - [`st.markdown`](https://docs.streamlit.io/library/api-reference/text/st.markdown)
 - [`st.header`](https://docs.streamlit.io/library/api-reference/text/st.header)
